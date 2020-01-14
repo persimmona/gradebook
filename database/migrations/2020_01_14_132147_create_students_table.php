@@ -24,7 +24,6 @@ class CreateStudentsTable extends Migration
             $table->string('ipn', 10)->nullable();
             $table->string('fio', 302)->nullable();
             $table->string('fio_short', 303)->nullable();
-            $table->string('fio_short', 303)->nullable();
             $table->string('login', 255)->nullable();
             $table->string('pass', 255)->nullable();
             $table->string('registry_code', 50)->nullable();
