@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Авторизуватися — Журнал Оцінок')
+@section('title','Зареєструватися — Журнал Оцінок')
 
 @section('content')
     <form class="login-form" action="" method="">
