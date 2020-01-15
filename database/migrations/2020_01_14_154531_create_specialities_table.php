@@ -15,13 +15,13 @@ class CreateSpecialitiesTable extends Migration
     {
         Schema::create('specialities', function (Blueprint $table) {
             $table->string('id', 12);
-            $table->string('speciality_code', 12);
+            $table->string('speciality_code', 12)->nullable();
             $table->string('speciality_name', 255);
-            $table->boolean('osvita_level_id');
+            $table->decimal('osvita_level_id',2,0);
             $table->boolean('is_used');
             $table->boolean('is_specialisation');
-            $table->string('main_speciality_id', 12);
-            $table->string('full_speciality_name', 268);
+            $table->string('main_speciality_id', 12)->nullable();
+            $table->string('full_speciality_name', 268)->nullable();
         });
     }
 

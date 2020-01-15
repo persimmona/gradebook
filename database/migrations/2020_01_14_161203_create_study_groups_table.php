@@ -16,10 +16,10 @@ class CreateStudyGroupsTable extends Migration
         Schema::create('study_groups', function (Blueprint $table) {
             $table->string('id', 12);
             $table->string('study_group_name', 50);
-            $table->boolean('study_group_state_id');
+            $table->decimal('study_group_state_id',9, 0);
             $table->integer('education_form_id');
             $table->string('study_program_id', 12);
-            $table->string('division_id', 12);
+            $table->string('division_id', 12)->nullable();
         });
     }
 

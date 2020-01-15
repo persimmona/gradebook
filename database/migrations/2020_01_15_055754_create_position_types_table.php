@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEducationFormsTable extends Migration
+class CreatePositionTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateEducationFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('education_forms', function (Blueprint $table) {
-           $table->integer('id');
-           $table->string('education_form_name', 80); 
-           $table->string('education_form_description', 255)->nullable();
+        Schema::create('position_types', function (Blueprint $table) {
+            $table->string('id',12);
+            $table->string('position_type_name',120);
         });
     }
 
@@ -27,6 +26,6 @@ class CreateEducationFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education_forms');
+        Schema::dropIfExists('position_types');
     }
 }

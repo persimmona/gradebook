@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEducationFormsTable extends Migration
+class CreateWnpSemestersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateEducationFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('education_forms', function (Blueprint $table) {
-           $table->integer('id');
-           $table->string('education_form_name', 80); 
-           $table->string('education_form_description', 255)->nullable();
+        Schema::create('wnp_semesters', function (Blueprint $table) {
+            $table->string('id',12);
+            $table->string('wnp_title_id',12);
+            $table->decimal('semester_id',2,0);
+            $table->integer('session_type_id');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateEducationFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education_forms');
+        Schema::dropIfExists('wnp_semesters');
     }
 }
