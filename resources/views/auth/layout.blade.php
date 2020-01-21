@@ -16,7 +16,7 @@
 </head>
 
 <body class="root">
-@include('nav')
+
 @yield('content')
 </body>
 </html>

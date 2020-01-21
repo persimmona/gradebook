@@ -19235,6 +19235,19 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+function toggleMobileMenu() {
+  var mobileMenu = document.querySelector('.mobile-menu');
+  var hamburger = document.querySelector('.hamburger');
+  var dataTitle = document.querySelector('.data-title');
+  hamburger.addEventListener('click', function () {
+    mobileMenu.classList.toggle('mobile-menu_active');
+    dataTitle.classList.toggle('data-title_active');
+    hamburger.classList.toggle('hamburger_active');
+  });
+}
+
+toggleMobileMenu();
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

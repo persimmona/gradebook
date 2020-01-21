@@ -1,11 +1,11 @@
-@extends('layout')
+@extends('auth.layout')
 
-@section('title','Авторизуватися — Журнал Оцінок')
+@section('title','Зареєструватися — Журнал Оцінок')
 
 @section('content')
     <form class="login-form" action="" method="">
         <div class="login-form__body">
-            <h1 class="login-form__title">Авторизуватися</h1>
+            <h1 class="login-form__title">Зареєструватися</h1>
             <div class="float-label login-form__float-label">
                 <input class="float-label__input" type="text" name="fullname" id="fullname" required>
                 <label class="float-label__placeholder" for="fullname">Логін</label>
@@ -14,6 +14,11 @@
             <div class="float-label login-form__float-label">
                 <input class="float-label__input" type="text" name="password" id="password" required>
                 <label class="float-label__placeholder" for="password">Пароль</label>
+            </div>
+
+            <div class="float-label login-form__float-label">
+                <input class="float-label__input" type="text" name="code" id="code" required>
+                <label class="float-label__placeholder" for="code">Код Реєстрації</label>
             </div>
 
             <div class="radio-field">
