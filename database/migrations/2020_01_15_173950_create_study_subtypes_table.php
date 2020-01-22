@@ -14,10 +14,10 @@ class CreateStudySubtypesTable extends Migration
     public function up()
     {
         Schema::create('study_subtypes', function (Blueprint $table) {
-           $table->integer('id')->nullable();
-           $table->decimal('study_type_id', 2, 0)->nullable();
-           $table->string('study_subtype_name',100)->nullable();
-           $table->string('study_subtype_short_name',10)->nullable();
+           $table->integer('id');
+           $table->decimal('study_type_id', 2, 0);
+           $table->string('study_subtype_name',100);
+           $table->string('study_subtype_short_name',10);
         });
     }
 

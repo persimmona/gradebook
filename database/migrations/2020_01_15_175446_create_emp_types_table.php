@@ -14,9 +14,9 @@ class CreateEmpTypesTable extends Migration
     public function up()
     {
         Schema::create('emp_types', function (Blueprint $table) {
-           $table->integer('id')->nullable();
-           $table->string('emp_type_name',50)->nullable();
-           $table->string('emp_type_short_name',50)->nullable();
+           $table->integer('id');
+           $table->string('emp_type_name',50);
+           $table->string('emp_type_short_name',50);
         });
     }
 

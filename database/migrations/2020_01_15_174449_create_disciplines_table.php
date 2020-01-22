@@ -14,12 +14,12 @@ class CreateDisciplinesTable extends Migration
     public function up()
     {
         Schema::create('disciplines', function (Blueprint $table) {
-            $table->integer('id')->nullable();
-            $table->string('discipline_name',255)->nullable();
-            $table->boolean('discipline_type_id')->nullable();
-            $table->boolean('is_used')->nullable();
-            $table->string('discipline_short_name',80);
-            $table->string('discipline_name_default',255);
+            $table->integer('id');
+            $table->string('discipline_name',255);
+            $table->boolean('discipline_type_id');
+            $table->boolean('is_used');
+            $table->string('discipline_short_name',80)->nullable();
+            $table->string('discipline_name_default',255)->nullable();
         });
     }
 

@@ -14,9 +14,9 @@ class CreateAttestationsTable extends Migration
     public function up()
     {
         Schema::create('attestations', function (Blueprint $table) {
-            $table->integer('id')->nullable();
-            $table->string('attestation_name',50)->nullable();
-            $table->string('attestation_short_name',10);
+            $table->integer('id');
+            $table->string('attestation_name',50);
+            $table->string('attestation_short_name',10)->nullable();
         });
     }
 

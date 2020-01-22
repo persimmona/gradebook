@@ -15,13 +15,13 @@ class CreateTestDisciplinesTable extends Migration
     {
         Schema::create('test_disciplines', function (Blueprint $table) {
             $table->bigInteger('id');
-            $table->string('wnp_discipline_sem_id',12)->nullable();
-            $table->decimal('study_type_id', 2, 0)->nullable();
-            $table->integer('study_sub_type_id');
-            $table->string('study_type_description',10);
-            $table->integer('attestation_id');
-            $table->boolean('is_custom')->nullable();
-            $table->decimal('max_score', 4, 2)->nullable();
+            $table->string('wnp_discipline_sem_id',12);
+            $table->decimal('study_type_id', 2, 0);
+            $table->integer('study_sub_type_id')->nullable();
+            $table->string('study_type_description',10)->nullable();
+            $table->integer('attestation_id')->nullable();
+            $table->boolean('is_custom');
+            $table->decimal('max_score', 4, 2);
         });
     }
 

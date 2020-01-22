@@ -14,8 +14,8 @@ class CreateDisciplineTypesTable extends Migration
     public function up()
     {
         Schema::create('discipline_types', function (Blueprint $table) {
-           $table->boolean('id')->nullable();
-           $table->string('discipline_type_name',80)->nullable();
+           $table->boolean('id');
+           $table->string('discipline_type_name',80);
         });
     }
 
