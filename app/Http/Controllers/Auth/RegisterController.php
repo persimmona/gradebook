@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Models\Student;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class RegisterController extends Controller
 {
@@ -41,6 +46,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -54,7 +64,22 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
+    } 
+
+    protected function validator_v2(array $data)
+    {
+        return Validator::make($data, [
+            'code' => ['required', 'string', 'max:50'],
+            'fullname' => ['required', 'string', 'email', 'max:255', 'unique:students,login'],
+            'password' => ['required', 'string', 'min:6']
+        ], [
+            'code.max' => 'Код реєстрації не може бути більше 50 символів',
+            'fullname.email' => 'Поле логін має містити адресу електронної пошти',
+            'fullname.max' => 'Адреса електронної пошти занадто довга',
+            'fullname.unique' => 'Користувач із такою адресою електронної пошти вже зареєстрований',
+            'password.min' => 'Пароль має бути не меншим за 6 символів'
+        ]);
+    } 
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,5 +94,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator_v2($request->all()); // ВОЗМОЖНА ОШИБКА
+        if ($validator->fails()) {          
+            return Redirect::back()->withErrors($validator)->withInput();
+        };
+        try
+        {
+            $var_student = Student::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
+        }
+        catch(ModelNotFoundException $exception) {
+            return Redirect::back()->withErrors(['code' => 'Хибний код реєстрації'])->withInput();
+        }
+        if($var_student->is_registered == 1) // ВОЗМОЖНА ОШИБКА
+        {
+            return Redirect::back()->withErrors(['code' => 'Користувач з таким кодом вже зареєстрований'])->withInput();    
+        }
+        $var_student->update(['password' => Hash::make($request['password']), 'login' => $request['fullname'], 'is_registered' => 1]);
+        return redirect()->route('login');
     }
 }

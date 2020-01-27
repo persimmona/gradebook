@@ -15,7 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/login', 'auth.login');
-Route::view('/register', 'auth.register');
-Route::view('student', 'student.index');
 // использовать именованнные роуты
+
+Route::group(['middleware' => 'guest:student'], function(){
+	Route::post('/register', 'Auth\RegisterController@postRegister')->name('postRegister');
+	Route::get('/register', 'Auth\RegisterController@showRegisterForm')->name('register');
+	Route::post('/login','Auth\LoginController@postLogin')->name('postLogin');
+	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+});
+
+Route::group(['middleware' => 'auth:student'], function(){
+	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+	Route::view('student', 'student.index');
+});

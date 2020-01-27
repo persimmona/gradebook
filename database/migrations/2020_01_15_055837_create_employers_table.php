@@ -24,7 +24,7 @@ class CreateEmployersTable extends Migration
             $table->string('fio_short', 303)->nullable();
             $table->string('division_id', 12);
             $table->string('login', 255)->nullable();
-            $table->string('pass', 255)->nullable();
+            $table->string('password', 255)->nullable();
             $table->string('registry_code', 50)->nullable();
             $table->boolean('is_registered');
         });
