@@ -15,12 +15,14 @@ class TermController extends Controller
     public function index()
     {
         $student = Student::find('M3NG6I8UZKW3');
-        $terms = $student->terms();
-        reset($terms);
-        $key = key($terms);
-        $currentTerm = [$key,$terms[$key] ];
-        unset($terms[$key]);
-        return view('student.index', compact('terms', 'currentTerm'));
+        $terms = $student->getSemesters();//а если возвращать модель?
+        $currentTerm = $terms[0];
+        unset($terms[0]);
+        //$key = key($terms);
+        //$currentTerm = [$key,$terms[$key] ];
+        //unset($terms[$key]);
+        //dd($student->disciplines('12VI9CPP2DIB'));
+        return view('student.index', compact('student','terms', 'currentTerm'));
 
     }
 
