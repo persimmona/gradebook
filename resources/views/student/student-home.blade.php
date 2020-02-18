@@ -36,27 +36,6 @@
                 {{$term->semester_id}} семестр {{$term->wnpTitle->study_year_id}} навчального року
             </a>
             @endforeach
-            {{--<a class="data-tab__item" href="#">--}}
-                {{--<svg class="forward-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">--}}
-                    {{--<path fill="#2a2a2a" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>--}}
-                    {{--<path fill="none" d="M0 0h24v24H0z"/>--}}
-                {{--</svg>--}}
-                {{--3 семестр 2018-2019 навчального року--}}
-            {{--</a>--}}
-            {{--<a class="data-tab__item" href="#">--}}
-                {{--<svg class="forward-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">--}}
-                    {{--<path fill="#2a2a2a" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>--}}
-                    {{--<path fill="none" d="M0 0h24v24H0z"/>--}}
-                {{--</svg>--}}
-                {{--2 семестр 2017-2018 навчального року--}}
-            {{--</a>--}}
-            {{--<a class="data-tab__item" href="#">--}}
-                {{--<svg class="forward-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">--}}
-                    {{--<path fill="#2a2a2a" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>--}}
-                    {{--<path fill="none" d="M0 0h24v24H0z"/>--}}
-                {{--</svg>--}}
-                {{--1 семестр 2017-2018 навчального року--}}
-            {{--</a>--}}
         </div>
     </div>
 

@@ -1,7 +1,8 @@
 <header class="header">
     <div class="header__container">
         <div class="header__left">
-            <p class="header__item">{{$student->last_name}} {{$student->first_name}}</p>
+            <p class="header__item">{{\Illuminate\Support\Facades\Auth::guard('student')->user()->last_name}}
+                {{\Illuminate\Support\Facades\Auth::guard('student')->user()->first_name}}</p>
             <a class="header__item header__item_link" href="/">Переглянути профіль</a>
         </div>
         <div class="header__right">
@@ -14,7 +15,8 @@
 <header class="header-mobile">
     <div class="header-mobile__top">
         <div class="user-info">
-            <div class="user-info__name">{{$student->last_name}} {{$student->first_name}}</div>
+            <div class="user-info__name">{{\Illuminate\Support\Facades\Auth::guard('student')->user()->last_name}}
+                {{\Illuminate\Support\Facades\Auth::guard('student')->user()->first_name}}</div>
             <div class="user-info__date">14 тиждень (06.01.2020)</div>
         </div>
         <div class="hamburger">

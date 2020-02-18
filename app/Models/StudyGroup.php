@@ -19,7 +19,7 @@ class StudyGroup extends Model
     
    }
    
-   public function divisions()
+   public function division()
    {
       return $this->belongsTo('App\Models\Division','division_id'); 
    }
@@ -28,6 +28,12 @@ class StudyGroup extends Model
    {
    	    return $this->belongsTo('App\Models\StudyProgram'); 
    }
+
+    public function wnpTitles()
+    {
+        return $this->hasMany(WnpTitle::class);
+    }
+
 /*
 
    public function educationForm()
@@ -39,12 +45,6 @@ class StudyGroup extends Model
    {
    	    return $this->belongsTo('App\Models\StudyGroupState'); 
    }
-*/
-  /* 
-public function studyCard()
-{
-    return $this->hasMany('App\Models\StudyCard','study_group_id');
-}
 */
 
 }

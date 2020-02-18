@@ -19,10 +19,24 @@ class Student extends Authenticatable
     {
         return $this->hasMany(StudyCard::class);
     }
+    public function studyGroups()
+    {
+        return $this->belongsToMany('App\Models\StudyGroup','study_cards','student_id','study_group_id');
+    }
 
-    public function getSemesters()
+    public function studyPrograms()
+    {
+        return $this->belongsToMany('App\Models\StudyProgram','study_cards','student_id','study_program_id');
+    }
+
+    public function studyStates()
+    {
+        return $this->belongsToMany('App\Models\StudyState','study_cards','student_id','study_state_id');
+    }
+
+    public function getSemesters($studyGroup)
     {//включить сюда id?
-        $wnpTitles =  $this->studyCards()->first()->studyGroup->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
+        $wnpTitles =  $this->studyGroups()->find($studyGroup)->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
         //id карточки будет параметром
         $wnpSemesters = new Collection();
         $currentData = $wnpTitles[0]->studyYear->currentData;
@@ -45,21 +59,6 @@ class Student extends Authenticatable
                 $disciplines[] = $wnpDisciplineSem->discipline;
         }
         return $disciplines;
-    }
-
-    public function studyGroups()
-    {
-    	return $this->belongsToMany('App\Models\StudyGroup','study_cards','student_id','study_group_id');
-    }
-
-    public function studyPrograms()
-    {
-    	return $this->belongsToMany('App\Models\StudyProgram','study_cards','student_id','study_program_id');
-    }
-
-    public function studyStates()
-    {
-    	return $this->belongsToMany('App\Models\StudyState','study_cards','student_id','study_state_id'); 
     }
 
    // получаем массив где спец-й 1 и больше
@@ -85,7 +84,7 @@ class Student extends Authenticatable
     public function getDivision()
     {
       $divisions=[];
-      $stgroups = $this->studyGroup;
+      $stgroups = $this->studyGroups;
       foreach ($stgroups as $stgroup) {
         if(!in_array($stgroup->divisions, $divisions))
         $divisions[]=$stgroup->divisions;
@@ -98,13 +97,15 @@ class Student extends Authenticatable
     public function getAssSpecDivis()
     {
            $ass = [];
-           $groups = $this->studyGroup;
+           $assWithGroup = [];
+           $groups = $this->studyGroups;
            foreach ($groups as $group) {
-            $div = $group->divisions;
+            $div = $group->division;
             $spec =$group->studyProgram->speciality;
             $ass += [ $spec->speciality_name => $div->division_name];
+            $assWithGroup[] = [$group, $ass];
            }
-           return  $ass;
+           return $assWithGroup;
     }
 // количество специальностей
     public function getCountSpecialities()
