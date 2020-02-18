@@ -14,9 +14,10 @@ class CreateOsvitaLevelsTable extends Migration
     public function up()
     {
         Schema::create('osvita_levels', function (Blueprint $table) {
-        $table->decimal('id', 2,0);
+        $table->decimal('id', 2,0)->unique();
         $table->string('osvita_level_name', 80);
         $table->boolean('is_used');
+        $table->string('osvita_level_short_name', 15);
         });
     }
 

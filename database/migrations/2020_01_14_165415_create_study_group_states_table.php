@@ -14,7 +14,7 @@ class CreateStudyGroupStatesTable extends Migration
     public function up()
     {
         Schema::create('study_group_states', function (Blueprint $table) {
-            $table->decimal('id',9,0);
+            $table->decimal('id',9,0)->unique();
             $table->string('study_group_state_name', 20); 
         });
     }

@@ -14,8 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::view('/login', 'auth.login');
 Route::view('/register', 'auth.register');
-Route::view('student', 'student.index');
+
 // использовать именованнные роуты
+Route::get('/speciality', ['uses'=>'SpecialityController@show', 'as'=>'speciality']);
