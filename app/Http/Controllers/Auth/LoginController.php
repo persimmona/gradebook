@@ -65,7 +65,7 @@ class LoginController extends Controller
             return Redirect::back()->withErrors($validator)->withInput();
         };
         if (Auth::guard('student')->attempt(['login' => $request->fullname, 'password' => $request->password])){
-            return 'Пользователь вошел, все гут';
+            return redirect()->route('terms');
         }
         return Redirect::back()->withErrors(['password' => 'Невірний логін або пароль'])->withInput(); 
     }

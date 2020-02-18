@@ -22,7 +22,7 @@ Route::group(['middleware' => 'guest:student'], function(){
 
 Route::group(['middleware' => 'auth:student'], function(){
 	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-	Route::get('/terms', 'TermController@index')->name('terms');
+	Route::get('/', 'TermController@index')->name('terms');
   Route::get('/terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
-  Route::get('profile', 'StudentController@show')->name('profile');//для посредника студент
+  Route::get('profile', 'StudentController@show')->name('profile');
 });
