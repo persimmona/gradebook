@@ -13,4 +13,14 @@ class Division extends Model
     {
         return $this->hasMany(WnpDisciplineSem::class);
     }
+   public function studyGroup()
+   {
+      return $this->hasMany('App\Models\StudyGroup','division_id','id');
+   }
+
+   public function divisionTypes()
+   {
+      return $this->belongsTo('App\Models\DivisionType','division_type_id'); 
+   }
+
 }

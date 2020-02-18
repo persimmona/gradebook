@@ -6,18 +6,45 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudyGroup extends Model
 {
-    public $incrementing = false;
-    protected $keyType = 'string';
-    public $timestamps = false;
-    protected $table = "study_groups"; //rename model!
+   protected $keyType = 'string';
+    
+   public $incrementing = false;
 
-    public function studyCards()
-    {
-        return $this->hasMany(StudyCard::class);
-    }
+   public $timestamps = false;
 
-    public function wnpTitles()
-    {
-        return $this->hasMany(WnpTitle::class);
-    }
+
+   public function students()
+   {
+    	return $this->belongsToMany('App\Models\Student','study_cards','study_group_id','student_id'); 
+    
+   }
+   
+   public function divisions()
+   {
+      return $this->belongsTo('App\Models\Division','division_id'); 
+   }
+
+   public function studyProgram()
+   {
+   	    return $this->belongsTo('App\Models\StudyProgram'); 
+   }
+/*
+
+   public function educationForm()
+   {
+   	    return $this->belongsTo('App\Models\EducationForm'); 
+   }
+
+   public function studyGroupState()
+   {
+   	    return $this->belongsTo('App\Models\StudyGroupState'); 
+   }
+*/
+  /* 
+public function studyCard()
+{
+    return $this->hasMany('App\Models\StudyCard','study_group_id');
+}
+*/
+
 }

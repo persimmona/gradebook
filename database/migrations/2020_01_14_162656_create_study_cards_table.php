@@ -14,12 +14,15 @@ class CreateStudyCardsTable extends Migration
     public function up()
     {
         Schema::create('study_cards', function (Blueprint $table) {
-            $table->string('id', 12); 
-            $table->string('student_id', 12); 
+            $table->string('id', 12)->unique();
+            $table->string('student_id', 12);
+           // $table->foreign('student_id')->references('id')->on('students');
             $table->string('study_program_id', 12);
+           // $table->foreign('study_program_id')->references('id')->on('study_programs');
             $table->string('study_group_id', 12);
+           // $table->foreign('study_group_id')->references('id')->on('study_groups');
             $table->integer('study_state_id');
-
+          //  $table->foreign('study_state_id')->references('id')->on('study_states');
         });
     }
 

@@ -14,8 +14,9 @@ class CreateStudyProgramsTable extends Migration
     public function up()
     {
         Schema::create('study_programs', function (Blueprint $table) {
-            $table->string('id', 12);
+            $table->string('id', 12)->unique();
             $table->string('speciality_id', 12);
+           // $table->foreign('speciality_id')->references('id')->on('specialities');
             $table->string('study_program_name', 255);
             $table->boolean('is_used');
         });

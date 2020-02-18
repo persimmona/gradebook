@@ -11,7 +11,6 @@
 |
 */
 
-// использовать именованнные роуты
 
 Route::group(['middleware' => 'guest:student'], function(){
 	Route::post('/register', 'Auth\RegisterController@postRegister')->name('postRegister');
@@ -23,6 +22,8 @@ Route::group(['middleware' => 'guest:student'], function(){
 Route::group(['middleware' => 'auth:student'], function(){
 	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 	Route::get('/', 'TermController@index')->name('terms');
+    Route::get('/speciality', ['uses'=>'SpecialityController@show', 'as'=>'speciality']);
   Route::get('/terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
   Route::get('profile', 'StudentController@show')->name('profile');
 });
+

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class Student extends Authenticatable
 {
     protected $fillable = ['login','password','is_registered'];
@@ -31,39 +32,84 @@ class Student extends Authenticatable
                     ->orderBy('semester_id', 'DESC')->get());
             else
                 $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->orderBy('semester_id', 'DESC')->get());
-
-//            foreach ($wnpSemesters as $wnpSemester){
-//                $terms[$wnpSemester->semester_id] = [$wnpTitle->study_year_id, $wnpSemester->id];
-//
-//            }
         }
-
-//        krsort($terms);
-//        if(key($terms) % 2 + 1 > $currentData->current_session_type_id - 1 && current($terms)==$currentData->current_study_year_id) {
-//            reset($terms);
-//            $key = key($terms);
-//            unset($terms[$key]);
-//        }
         return $wnpSemesters;
     }
 
     public function getDisciplines($wnpSemester)
     {
-        //выходные параметры: Нужно вывести список дисциплин конкретного семестра, конкретной рабочей программы()!
-       // $wnpTitles =  $this->studyCards()->first()->studyGroup->wnpTitles->all();
-        //id карточки будет параметром
-        $disciplines=[];
-        //foreach ($wnpTitles as $wnpTitle){//скорее всего не подходит
-           // $wnpSemester = $wnpTitle->wnpSemesters->find($termId);
-            $wnpDisciplineSems = $wnpSemester->wnpDisciplineSems->all();//снова цикл? Это и есть наши предметы
-            foreach ($wnpDisciplineSems as $wnpDisciplineSem)
-            {
-                if(isset($wnpDisciplineSem->discipline))
-                    $disciplines[] = $wnpDisciplineSem->discipline;
-            }
-       // }
+        $disciplines = [];
+        $wnpDisciplineSems = $wnpSemester->wnpDisciplineSems->all();
+        foreach ($wnpDisciplineSems as $wnpDisciplineSem) {
+            if (isset($wnpDisciplineSem->discipline))
+                $disciplines[] = $wnpDisciplineSem->discipline;
+        }
         return $disciplines;
     }
 
+    public function studyGroups()
+    {
+    	return $this->belongsToMany('App\Models\StudyGroup','study_cards','student_id','study_group_id');
+    }
+
+    public function studyPrograms()
+    {
+    	return $this->belongsToMany('App\Models\StudyProgram','study_cards','student_id','study_program_id');
+    }
+
+    public function studyStates()
+    {
+    	return $this->belongsToMany('App\Models\StudyState','study_cards','student_id','study_state_id'); 
+    }
+
+   // получаем массив где спец-й 1 и больше
+    public function getSpecialities()
+    {
+         $specialities = array();
+         $programs = $this->studyPrograms;
+          if($programs->count()===1)
+          {
+            $specialities[] = $programs->first()->speciality;      
+          }
+          else {
+            foreach ($programs as $program) {
+                if(!in_array($program->speciality, $specialities))
+                $specialities[]=$program->speciality;
+              }
+          } 
+         return $specialities;     
+    }
+
+    // получаем факультеты по группе в которой находится студент
+
+    public function getDivision()
+    {
+      $divisions=[];
+      $stgroups = $this->studyGroup;
+      foreach ($stgroups as $stgroup) {
+        if(!in_array($stgroup->divisions, $divisions))
+        $divisions[]=$stgroup->divisions;
+      }
+      return $divisions;
+    }
+
+// получаем асс-й масив название_спец => название факултета
+
+    public function getAssSpecDivis()
+    {
+           $ass = [];
+           $groups = $this->studyGroup;
+           foreach ($groups as $group) {
+            $div = $group->divisions;
+            $spec =$group->studyProgram->speciality;
+            $ass += [ $spec->speciality_name => $div->division_name];
+           }
+           return  $ass;
+    }
+// количество специальностей
+    public function getCountSpecialities()
+    {
+      return count($this->getSpecialities());
+    }
 
 }

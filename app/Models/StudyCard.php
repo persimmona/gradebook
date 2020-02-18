@@ -19,4 +19,5 @@ class StudyCard extends Model
     {
         return $this->belongsTo(StudyGroup::class);
     }
+
 }
