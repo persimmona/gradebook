@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header__container">
         <div class="header__left">
-            <p class="header__item">Прізвище І.П.</p>
+            <p class="header__item"><!--c проверкой на преподавателя или студента-->Прізвище І.П.</p>
             <a class="header__item header__item_link" href="/">Переглянути профіль</a>
         </div>
         <div class="header__right">
