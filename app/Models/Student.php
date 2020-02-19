@@ -34,9 +34,9 @@ class Student extends Authenticatable
         return $this->belongsToMany('App\Models\StudyState','study_cards','student_id','study_state_id');
     }
 
-    public function getSemesters($studyGroup)
-    {//включить сюда id?
-        $wnpTitles =  $this->studyGroups()->find($studyGroup)->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
+    public function getSemesters($studyCardId)
+    {
+        $wnpTitles = $this->studyCards()->find($studyCardId)->studyGroup->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
         //id карточки будет параметром
         $wnpSemesters = new Collection();
         $currentData = $wnpTitles[0]->studyYear->currentData;
@@ -59,58 +59,6 @@ class Student extends Authenticatable
                 $disciplines[] = $wnpDisciplineSem->discipline;
         }
         return $disciplines;
-    }
-
-   // получаем массив где спец-й 1 и больше
-    public function getSpecialities()
-    {
-         $specialities = array();
-         $programs = $this->studyPrograms;
-          if($programs->count()===1)
-          {
-            $specialities[] = $programs->first()->speciality;      
-          }
-          else {
-            foreach ($programs as $program) {
-                if(!in_array($program->speciality, $specialities))
-                $specialities[]=$program->speciality;
-              }
-          } 
-         return $specialities;     
-    }
-
-    // получаем факультеты по группе в которой находится студент
-
-    public function getDivision()
-    {
-      $divisions=[];
-      $stgroups = $this->studyGroups;
-      foreach ($stgroups as $stgroup) {
-        if(!in_array($stgroup->divisions, $divisions))
-        $divisions[]=$stgroup->divisions;
-      }
-      return $divisions;
-    }
-
-// получаем асс-й масив название_спец => название факултета
-
-    public function getAssSpecDivis()
-    {
-           $ass = [];
-           $assWithGroup = [];
-           $groups = $this->studyGroups;
-           foreach ($groups as $group) {
-            $div = $group->division;
-            $spec =$group->studyProgram->speciality;
-            $ass += [ $spec->speciality_name => $div->division_name];
-            $assWithGroup[] = [$group, $ass];
-           }
-           return $assWithGroup;
-    }
-// количество специальностей
-    public function getCountSpecialities()
-    {
-      return count($this->getSpecialities());
     }
 
 }

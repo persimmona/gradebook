@@ -13,17 +13,17 @@
 
 
 Route::group(['middleware' => 'guest:student'], function(){
-	Route::post('/register', 'Auth\RegisterController@postRegister')->name('postRegister');
-	Route::get('/register', 'Auth\RegisterController@showRegisterForm')->name('register');
-	Route::post('/login','Auth\LoginController@postLogin')->name('postLogin');
-	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+	Route::post('register', 'Auth\RegisterController@postRegister')->name('postRegister');
+	Route::get('register', 'Auth\RegisterController@showRegisterForm')->name('register');
+	Route::post('login','Auth\LoginController@postLogin')->name('postLogin');
+	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 });
 
 Route::group(['middleware' => 'auth:student'], function(){
-	Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-	Route::get('/terms/{group}', 'TermController@show')->name('terms'); //id группы как параметр? Можно?
-    Route::get('/', ['uses'=>'SpecialityController@show', 'as'=>'speciality']);
-    Route::get('/terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
-    Route::get('/profile', 'StudentController@show')->name('profile');
+	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+	Route::get('{studyCard}/terms', 'TermController@show')->name('terms');
+    Route::get('/', 'SpecialityController@show')->name('speciality');
+    Route::get('terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
+    Route::get('profile', 'StudentController@show')->name('profile');
 });
 

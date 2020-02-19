@@ -41,7 +41,7 @@
 
     <footer class="footer"></footer>
 
-    <script src="./script.js" defer>
+    <script src="{{ asset('js/app.js')}}" defer>
 
     </script>
 @endsection

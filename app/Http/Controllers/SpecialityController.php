@@ -18,16 +18,16 @@ class SpecialityController extends Controller
     {
         $student = Auth::guard('student')->user();
 
-        $specNum = $student->getCountSpecialities(); //количество специальностей
+        $studyCards=$student->studyCards;
 
-	    $assSpecDivis = $student->getAssSpecDivis(); // асс-й массив, ключ -  имя спец, значение - имя факультета
-	    if ($specNum <-2 && view()->exists('student.student-home')  ) {
-		return redirect()->route('terms', $student->getAssSpecDivis()[0][0]);
-	    }
-	    if ($specNum >=1 && view()->exists('student.specialities')) {
-		return view('student.specialities',['specialities'=>$assSpecDivis]);	//не забыть год и курс
-	    }
+        $studyCardsCount = count($studyCards);
 
+        if ($studyCardsCount <-2 && view()->exists('student.student-home')  ) {
+		return redirect()->route('terms', $studyCards);
+	    }
+	    if ($studyCardsCount >=1 && view()->exists('student.specialities')) {
+		return view('student.specialities',['studyCards'=>$studyCards]);
+	    }
 	}
 
 }

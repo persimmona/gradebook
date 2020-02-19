@@ -16,7 +16,7 @@
             </div>
 
             <div class="float-label login-form__float-label">
-                <input class="float-label__input" type="text" name="password" id="password" value="{{ old('password') }}" required>
+                <input class="float-label__input" type="password" name="password" id="password" value="{{ old('password') }}" required>
                 <label class="float-label__placeholder" for="password">Пароль</label>
                 @error('password')
                 {{ $message }}
