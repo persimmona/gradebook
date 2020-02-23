@@ -50,15 +50,4 @@ class Student extends Authenticatable
         return $wnpSemesters;
     }
 
-    public function getDisciplines($wnpSemester)
-    {
-        $disciplines = [];
-        $wnpDisciplineSems = $wnpSemester->wnpDisciplineSems->all();
-        foreach ($wnpDisciplineSems as $wnpDisciplineSem) {
-            if (isset($wnpDisciplineSem->discipline))
-                $disciplines[] = $wnpDisciplineSem->discipline;
-        }
-        return $disciplines;
-    }
-
 }

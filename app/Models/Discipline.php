@@ -18,4 +18,5 @@ class Discipline extends Model
     {
         return $this->belongsTo(DisciplineType::class);
     }
+
 }

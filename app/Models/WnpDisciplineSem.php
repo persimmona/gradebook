@@ -29,4 +29,11 @@ class WnpDisciplineSem extends Model
     {
         return $this->belongsTo(StudyType::class, 'finished_study_type_id');
     }
+
+    public function testDisciplines()
+    {
+        return $this->hasMany(TestDiscipline::class);
+    }
+
+
 }

@@ -10,9 +10,11 @@
             <div class="float-label login-form__float-label">
                 <input class="float-label__input" type="text" name="fullname" id="fullname" value="{{ old('fullname') }}" required>
                 <label class="float-label__placeholder" for="fullname">Логін</label>
-                @error('fullname')
-                {{ $message }}
-                @enderror
+                <div class="mt-5">
+                    @error('fullname')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
 
             <div class="float-label login-form__float-label">

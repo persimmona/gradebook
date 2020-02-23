@@ -20,4 +20,15 @@ class StudyCard extends Model
         return $this->belongsTo(StudyGroup::class);
     }
 
+    public function testResults()
+    {
+        return $this->hasMany(TestResult::class, 'study_card_id');
+    }
+
+    public function getStudyCardById($id)
+    {
+        return $this->where('id', $id);
+    }
+
+
 }

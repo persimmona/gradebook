@@ -15,9 +15,9 @@ class CreateTestResultsTable extends Migration
     {
         Schema::create('test_results', function (Blueprint $table) {
             $table->bigInteger('test_discipline_id');
-            $table->string('study_card_id',12);
-            $table->decimal('value', 4, 2);
-            $table->string('employer_id',12);
+            $table->string('study_card_id',12)->nullable();
+            $table->decimal('value', 4, 2)->nullable();
+            $table->string('employer_id',12)->nullable();
         });
     }
 

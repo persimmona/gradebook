@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class WnpSemester extends Model
 {
@@ -12,7 +13,7 @@ class WnpSemester extends Model
 
     public function wnpDisciplineSems()
     {
-        return $this->hasMany(WnpDisciplineSem::class);
+        return $this->hasMany(WnpDisciplineSem::class)->has('discipline');
     }
 
     public function sessionType()
@@ -24,4 +25,5 @@ class WnpSemester extends Model
     {
         return $this->belongsTo(WnpTitle::class);
     }
+
 }

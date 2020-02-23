@@ -14,12 +14,15 @@
                     <th>А2</th>
                     <th>Підсумки</th>
                 </tr>
-                @foreach($student->getDisciplines($currentTerm) as $discipline)<!--будет передаваться параметром в оценки-->
+                @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)<!--лучше выводить disSem-->
                 <tr>
-                    <td>{{$discipline->discipline_name}}</td>
-                    <td>30/30</td>
-                    <td>25/30</td>
-                    <td>55/60</td>
+                    <td>{{$wnpDisciplineSem->discipline->discipline_name}}</td>
+                    <td>{{$a1 = $wnpDisciplineSem->testDisciplines()->a1()->sumTestResults()}} /
+                        {{$wnpDisciplineSem->testDisciplines()->a1()->sum('max_score')}}</td>
+                    <td>{{$a2 = $wnpDisciplineSem->testDisciplines()->a2()->sumTestResults()}} /
+                        {{$wnpDisciplineSem->testDisciplines()->a2()->sum('max_score')}}</td>
+                    <td>{{$a1 + $a2}}
+                        / {{$currentTerm->wnpDisciplineSems[3]->testDisciplines()->maxScore()}}</td>
                 </tr>
                 @endforeach
             </table>
