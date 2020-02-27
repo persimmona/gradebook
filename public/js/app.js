@@ -19,6 +19,8 @@ function showDisciplines() {
 
     let termId = $(this).attr('data-id');
 
+    let table = document.querySelector('.data'+termId);
+
     if(table.textContent !==''){
       svg.style.transform = 'rotate(0deg)';
       table.innerHTML= '';
@@ -34,7 +36,7 @@ function showDisciplines() {
         type: 'post',
         data: { "termId": termId },
         success: function (data) {
-          $('.data'+termId).html(data);
+          table.innerHTML = data;
         },
         error: function (err) {
           console.log(err);

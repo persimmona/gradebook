@@ -1,4 +1,3 @@
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 @extends("layout")
 
 @section("title", "Студент — Журнал Оцінок")
@@ -17,7 +16,7 @@
                 </tr>
                 @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)<!--лучше выводить disSem-->
                 <tr>
-                    <td>{{$wnpDisciplineSem->discipline->discipline_name}}</td>
+                    <td><a href="">{{$wnpDisciplineSem->discipline->discipline_name}}</a></td>
                     <td>{{$a1 = $wnpDisciplineSem->testDisciplines()->a1()->sumTestResults()}} /
                         {{$wnpDisciplineSem->testDisciplines()->a1()->sum('max_score')}}</td>
                     <td>{{$a2 = $wnpDisciplineSem->testDisciplines()->a2()->sumTestResults()}} /
