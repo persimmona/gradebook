@@ -1,3 +1,4 @@
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 @extends("layout")
 
 @section("title", "Студент — Журнал Оцінок")
@@ -22,7 +23,7 @@
                     <td>{{$a2 = $wnpDisciplineSem->testDisciplines()->a2()->sumTestResults()}} /
                         {{$wnpDisciplineSem->testDisciplines()->a2()->sum('max_score')}}</td>
                     <td>{{$a1 + $a2}}
-                        / {{$currentTerm->wnpDisciplineSems[3]->testDisciplines()->maxScore()}}</td>
+                        / {{$wnpDisciplineSem->testDisciplines()->maxScore()}}</td>
                 </tr>
                 @endforeach
             </table>
@@ -31,20 +32,19 @@
     <div class="data-tab root__data-tab">
         <div class="data-tab__container">
             @foreach($terms as $term)
-            <a class="data-tab__item" href="#">
+            <a class="data-tab__item" href="#" data-id="{{$term->id}}">
               <svg class="forward-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                     <path fill="#2a2a2a" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>
                     <path fill="none" d="M0 0h24v24H0z"/>
                 </svg>
                 {{$term->semester_id}} семестр {{$term->wnpTitle->study_year_id}} навчального року
             </a>
+            <table class="data data{{$term->id}}"></table>
             @endforeach
         </div>
     </div>
 
     <footer class="footer"></footer>
 
-    <script src="{{ asset('js/app.js')}}" defer>
-
-    </script>
+    <script src="{{ asset('js/app.js')}}" defer></script>
 @endsection

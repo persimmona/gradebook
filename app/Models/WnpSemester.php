@@ -26,4 +26,8 @@ class WnpSemester extends Model
         return $this->belongsTo(WnpTitle::class);
     }
 
+    public static function getSemesterById($termId)
+    {
+        return WnpSemester::where('id', $termId)->first();
+    }
 }

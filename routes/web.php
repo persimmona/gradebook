@@ -25,5 +25,7 @@ Route::group(['middleware' => 'auth:student'], function(){
     Route::get('/', 'SpecialityController@show')->name('speciality');
     Route::get('terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
     Route::get('profile', 'StudentController@show')->name('profile');
+
+    Route::post('/ajaxRequest', 'AjaxController@show')->name('ajax');
 });
 
