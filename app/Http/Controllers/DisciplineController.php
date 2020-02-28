@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Discipline;
+use App\Models\WnpDisciplineSem;
 use Illuminate\Http\Request;
 
 class DisciplineController extends Controller
@@ -43,9 +45,10 @@ class DisciplineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(WnpDisciplineSem $wnpDisciplineSem)
     {
-        //
+        $testDisciplines = $wnpDisciplineSem->testDisciplines;
+        return view('student.subject', compact('testDisciplines'));
     }
 
     /**

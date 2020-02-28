@@ -11,6 +11,15 @@ body {
   height: 100%;
 }
 
+a{
+  color: #6aa889;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #3b5b4a;
+}
+
 .root {
   color: #2a2a2a;
   font-family: "Montserrat", sans-serif;
@@ -166,6 +175,11 @@ body {
   background: #2f483b;
 }
 
+.login-form__link{
+  padding-top: 20px;
+  align-self: flex-end;
+}
+
 .curtain {
   position: relative;
   overflow: hidden;
@@ -231,19 +245,18 @@ body {
 
 
 .header__item a{
-   text-decoration: none;
    color: #e8e8e8;
  }
 
 .header__item:last-child {
   margin-right: 0;
+  color: #e8e8e8;
 }
 
 .header__item_link {
   position: relative;
   padding: 7px 15px;
   text-decoration: none;
-  color: #e8e8e8;
 }
 
 .header__item_link::before {
@@ -462,15 +475,6 @@ body {
 .data th,
 .data td {
   padding: 18px 10px;
-}
-
-.data td:first-child a{
-  color: #6aa889;
-  text-decoration: none;
-}
-
-.data td:first-child a:hover{
-  color: #3b5b4a;
 }
 
 .data th:first-child {

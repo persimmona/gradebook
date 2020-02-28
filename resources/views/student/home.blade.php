@@ -14,15 +14,15 @@
                     <th>А2</th>
                     <th>Підсумки</th>
                 </tr>
-                @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)<!--лучше выводить disSem-->
+                @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)
                 <tr>
-                    <td><a href="">{{$wnpDisciplineSem->discipline->discipline_name}}</a></td>
-                    <td>{{$a1 = $wnpDisciplineSem->testDisciplines()->a1()->sumTestResults()}} /
-                        {{$wnpDisciplineSem->testDisciplines()->a1()->sum('max_score')}}</td>
-                    <td>{{$a2 = $wnpDisciplineSem->testDisciplines()->a2()->sumTestResults()}} /
-                        {{$wnpDisciplineSem->testDisciplines()->a2()->sum('max_score')}}</td>
-                    <td>{{$a1 + $a2}}
-                        / {{$wnpDisciplineSem->testDisciplines()->maxScore()}}</td>
+                    <td><a href="{{route('discipline.show', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
+                    Str::slug($wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDisciplineSem->discipline->discipline_name}}</a></td>
+                    <td>{{$a1 = \App\Models\TestDiscipline::sumTestResultsA1($wnpDisciplineSem->testDisciplines)}} /
+                        {{ceil(\App\Models\TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score'))}}</td>
+                    <td>{{$a2 = \App\Models\TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines)}} /
+                        {{ceil(\App\Models\TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score'))}}</td>
+                    <td>{{$a1 + $a2}} / 100</td>
                 </tr>
                 @endforeach
             </table>

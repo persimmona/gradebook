@@ -21,9 +21,9 @@ Route::group(['middleware' => 'guest:student'], function(){
 
 Route::group(['middleware' => 'auth:student'], function(){
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-	Route::get('{studyCard}/terms', 'TermController@show')->name('terms');
+	Route::get('{studyCard}/terms', 'TermController@show')->name('term');
     Route::get('/', 'SpecialityController@show')->name('speciality');
-    Route::get('terms/{discipline}-{slug}', 'DisciplineController@show')->name('discipline');
+    Route::get('disciplines/{wnpDisciplineSem}-{slug}', 'DisciplineController@show')->name('discipline.show');
     Route::get('profile', 'StudentController@show')->name('profile');
 
     Route::post('/ajaxRequest', 'AjaxController@show')->name('ajax');

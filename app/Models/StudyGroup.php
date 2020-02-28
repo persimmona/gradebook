@@ -21,7 +21,7 @@ class StudyGroup extends Model
    
    public function division()
    {
-      return $this->belongsTo('App\Models\Division','division_id'); 
+      return $this->belongsTo('App\Models\Division','division_id');
    }
 
    public function studyProgram()
@@ -34,17 +34,15 @@ class StudyGroup extends Model
         return $this->hasMany(WnpTitle::class);
     }
 
-/*
+    public function scopeFaculty()
+    {
+        $div = $this->division()->first();
+        return $div->exists('parent_division_id') ? $div->where('id', $div->parent_division_id)->first() : $div;
+    }
 
-   public function educationForm()
-   {
-   	    return $this->belongsTo('App\Models\EducationForm'); 
-   }
-
-   public function studyGroupState()
-   {
-   	    return $this->belongsTo('App\Models\StudyGroupState'); 
-   }
-*/
+    public function educationForm()
+    {
+        return $this->belongsTo(EducationForm::class);
+    }
 
 }

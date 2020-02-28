@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TestDiscipline;
 use App\Models\WnpSemester;
 use Illuminate\Http\Request;
 
@@ -17,14 +18,16 @@ class AjaxController extends Controller
                     <th>Підсумки</th>
                 </tr>";
     foreach($term->wnpDisciplineSems as $wnpDisciplineSem){
-        $a1 = $wnpDisciplineSem->testDisciplines()->a1()->sumTestResults();
-        $a2 = $wnpDisciplineSem->testDisciplines()->a2()->sumTestResults();
+        $a1 = TestDiscipline::sumTestResultsA1($wnpDisciplineSem->testDisciplines);
+        $a2 = TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines);
+        $a1Max = ceil(TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score'));
+        $a2Max = ceil(TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score'));
         $sum = $a1 + $a2;
         $data .= "<tr>
                     <td>{$wnpDisciplineSem->discipline->discipline_name}</td>
-                    <td>{$a1} / {$wnpDisciplineSem->testDisciplines()->a1()->sum('max_score')}</td>
-                    <td>{$a2} / {$wnpDisciplineSem->testDisciplines()->a2()->sum('max_score')}</td>
-                    <td>{$sum} / {$wnpDisciplineSem->testDisciplines()->maxScore()}</td>
+                    <td>{$a1} / {$a1Max}</td>
+                    <td>{$a2} / {$a2Max}</td>
+                    <td>{$sum} / 100</td>
                 </tr>";
     }
 

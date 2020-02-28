@@ -23,7 +23,7 @@ class TermController extends Controller
         $terms = $student->getSemesters($studyCard->id);
         $currentTerm = $terms[0];
         unset($terms[0]);
-        return view('student.student-home', compact('terms', 'currentTerm'));
+        return view('student.home', compact('terms', 'currentTerm'));
 
     }
 

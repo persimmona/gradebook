@@ -10,11 +10,9 @@
             <div class="float-label login-form__float-label">
                 <input class="float-label__input" type="text" name="fullname" id="fullname" value="{{ old('fullname') }}" required>
                 <label class="float-label__placeholder" for="fullname">Логін</label>
-                <div class="mt-5">
                     @error('fullname')
                     {{ $message }}
                     @enderror
-                </div>
             </div>
 
             <div class="float-label login-form__float-label">
@@ -39,7 +37,10 @@
             </div>
 
             <button class="login-form__submit" type="submit">Увійти</button>
+
+            <a href="{{route('register')}}" class="login-form__link">Зараэструватися</a>
         </div>
+
 
         <div class="curtain">
             <p class="curtain__title">Журнал Оцінок</p>

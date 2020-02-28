@@ -18,7 +18,17 @@ class CurrentData extends Model
     }
     public function studyYear()
     {
-        return $this->belongsTo(StudyYear::class);
+        return $this->belongsTo(StudyYear::class, 'current_study_year_id');
+    }
+
+    public static function getCurrentWeekNumber()
+    {
+        $startDate = CurrentData::first()->studyYear->year_date_start;
+        $currentDate = date('Y-m-d');
+        $first = date_create_from_format('Y-m-d', $startDate);
+        $second = date_create_from_format('Y-m-d', $currentDate);
+
+        return floor($first->diff($second)->days/7);
     }
 
 }

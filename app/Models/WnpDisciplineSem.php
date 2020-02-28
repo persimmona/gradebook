@@ -32,8 +32,9 @@ class WnpDisciplineSem extends Model
 
     public function testDisciplines()
     {
-        return $this->hasMany(TestDiscipline::class);
+        return $this->hasMany(TestDiscipline::class)->orderBy('attestation_id');
     }
+
 
 
 }
