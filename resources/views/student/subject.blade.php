@@ -29,20 +29,13 @@
                     {{\App\Models\TestDiscipline::getA1($testDisciplines)->sum('max_score')}}</td>
                 <td>{{\App\Models\TestDiscipline::sumTestResultsA2($testDisciplines)}}  /
                     {{\App\Models\TestDiscipline::getA2($testDisciplines)->sum('max_score')}}</td>
-
-            </tr><!-- проверка есть ли екзамен, если есть, то выводить -->
-            {{--<tr class="data__exam">--}}
-                {{--<td>Екзамен</td>--}}
-                {{--<td>0/40</td>--}}
-                {{--<td></td>--}}
-                {{--<td></td>--}}
-            {{--</tr>--}}
+            </tr>
         </table>
     </div>
 </div>
 
 <div class="home-link-container">
-    <a class="home-link" href="/">
+    <a class="home-link" href="{{back()->getTargetUrl()}}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
             <path class="stroke" fill="#fff" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>
             <path fill="none" d="M0 0h24v24H0z"/>

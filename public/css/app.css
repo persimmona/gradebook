@@ -645,7 +645,7 @@ a:hover{
   -webkit-box-direction: normal;
           flex-direction: column;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 30px auto;
   padding: 0 15px;
 }
 
@@ -653,7 +653,7 @@ a:hover{
   align-self: flex-end;
   text-decoration: none;
   color: #6aa889;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .home-link svg {
@@ -665,6 +665,9 @@ a:hover{
 
 .home-link svg .stroke {
   fill: #6aa889;
+}
+.home-link:hover .stroke {
+  fill: #3b5b4a;
 }
 
 @media screen and (max-aspect-ratio: 8/5), screen and (max-width: 1024px) {
