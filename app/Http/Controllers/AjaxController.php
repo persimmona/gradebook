@@ -20,9 +20,9 @@ class AjaxController extends Controller
     foreach($term->wnpDisciplineSems as $wnpDisciplineSem){
         $a1 = TestDiscipline::sumTestResultsA1($wnpDisciplineSem->testDisciplines);
         $a2 = TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines);
-        $a1Max = ceil(TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score'));
-        $a2Max = ceil(TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score'));
-        $sum = $a1 + $a2;
+        $a1Max = TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score');
+        $a2Max = TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score');
+        $sum = TestDiscipline::sumTestResults($wnpDisciplineSem->testDisciplines);
         $data .= "<tr>
                     <td>{$wnpDisciplineSem->discipline->discipline_name}</td>
                     <td>{$a1} / {$a1Max}</td>

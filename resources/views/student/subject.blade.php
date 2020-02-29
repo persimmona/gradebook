@@ -17,7 +17,7 @@
             @foreach($testDisciplines as $testDiscipline)
             <tr>
                 <td>{{$testDiscipline->studyType->study_type_name}}</td>
-                <td><? echo $testDiscipline->testResults ? $testDiscipline->testResults->value : 0 ?> / {{$testDiscipline->max_score}}</td>
+                <td><? echo isset($testDiscipline->testResults[0]) ? $testDiscipline->testResults[0]->value : 0 ?> / {{$testDiscipline->max_score}}</td>
                 <td><? echo $testDiscipline->attestation_id == 1 ?  '<span class="fat-plus">+</span>' : ''?></td>
                 <td><? echo $testDiscipline->attestation_id == 2 ?  '<span class="fat-plus">+</span>' : ''?></td>
             </tr>

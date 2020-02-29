@@ -16,7 +16,7 @@ class TestDiscipline extends Model
 
     public function testResults()
     {
-        return $this->hasOne(TestResult::class, 'test_discipline_id');
+        return $this->hasMany(TestResult::class, 'test_discipline_id');
     }
 
     public function attestation()
@@ -34,53 +34,27 @@ class TestDiscipline extends Model
         return $this->belongsTo(StudySubtype::class);
     }
 
-    public function scopeTestDisciplinesOrdered($query)//возвращает только те предметы, где уже есть оценки
-    {
-        return $query->has('testResults')->orderBy('attestation_id')->get();
-    }
-//
-//    public function scopeA1($query) //оценки дисциплин, что относятся к 1 аттестации
-//    {
-//        return $query->with('testResults')->where('attestation_id', 1);
-//    }
-//
-//    public function scopeA2($query) //оценки дисциплин, что относятся ко 2 аттестации
-//    {
-//        return $query->with('testResults')->where('attestation_id', 2);
-//    }
-
-//    public function scopeMaxScore($query) //максимальное значение набранных баллов в течение семестра
-//    {
-//        $max_score = $query->where('attestation_id', 3)->first()->max_score;
-//        return $max_score == 100.00 ? floor($max_score) : 60;
-//    }
-
-//    public function scopeSumTestResults($query) //сумма оценок для аттестаций
-//    {
-//        return $query->get()->pluck('testResults')->sum('value');
-//    }
-
     public static function sumTestResultsA1($testDisciplines) //сумма оценок для аттестаций
     {
-        return $testDisciplines->where('attestation_id', 1)->pluck('testResults')->sum('value');
+        return $testDisciplines->where('attestation_id', 1)->pluck('testResults')->flatten()->sum('value');
     }
 
     public static function sumTestResultsA2($testDisciplines) //сумма оценок для аттестаций
     {
-        return $testDisciplines->where('attestation_id', 2)->pluck('testResults')->sum('value');
+        return $testDisciplines->where('attestation_id', 2)->pluck('testResults')->flatten()->sum('value');
     }
 
-    public static function sumTestResults($testDisciplines) //сумма оценок для аттестаций
+    public static function sumTestResults($testDisciplines) //сумма оценок для итогов
     {
-        return $testDisciplines->pluck('testResults')->sum('value');
+        return $testDisciplines->pluck('testResults')->flatten()->sum('value');
     }
 
-    public static function getA1($testDisciplines) //сумма оценок для аттестаций
+    public static function getA1($testDisciplines) //получить все оценки для 1 аттестации
     {
         return $testDisciplines->where('attestation_id', 1);
     }
 
-    public static function getA2($testDisciplines) //сумма оценок для аттестаций
+    public static function getA2($testDisciplines) //получить все оценки для 2 аттестации
     {
         return $testDisciplines->where('attestation_id', 2);
     }

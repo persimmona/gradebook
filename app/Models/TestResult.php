@@ -17,9 +17,8 @@ class TestResult extends Model
 
     public function testDiscipline()
     {
-        return $this->belongsTo(TestDiscipline::class, 'test_discipline_id', 'test_discipline_id');
+        return $this->belongsTo(TestDiscipline::class, 'id', 'test_discipline_id');
     }
-
 
 
 }
