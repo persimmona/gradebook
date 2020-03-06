@@ -12,11 +12,12 @@
 */
 
 
-Route::group(['middleware' => 'guest:student'], function(){
+Route::group(['middleware' => 'guest'], function(){
 	Route::post('register', 'Auth\RegisterController@postRegister')->name('postRegister');
 	Route::get('register', 'Auth\RegisterController@showRegisterForm')->name('register');
 	Route::post('login','Auth\LoginController@postLogin')->name('postLogin');
 	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
 });
 
 Route::group(['middleware' => 'auth:student'], function(){
@@ -27,5 +28,13 @@ Route::group(['middleware' => 'auth:student'], function(){
     Route::get('profile', 'StudentController@show')->name('profile');
 
     Route::post('/ajaxRequest', 'AjaxController@show')->name('ajax');
+});
+
+
+Route::group(['middleware' => 'auth:employer'], function(){
+
+   Route::get('/terms', 'TermController@showEmployerTerms')->name('term.showEmployerTerms');
+
+
 });
 

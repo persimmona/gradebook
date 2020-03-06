@@ -11,6 +11,23 @@ function toggleMobileMenu() {
 }
 toggleMobileMenu();
 
+function toggleDataOptions() {
+  let dataOptions = document.querySelectorAll('.data-options');
+  dataOptions.forEach(item => {
+    item.addEventListener('click', function() {
+      let list = this.lastElementChild;
+      if (list.classList.contains('data-options__list_active')) {
+        list.classList.remove('data-options__list_active');
+        this.style.background = '#6aa889';
+      } else {
+        list.classList.add('data-options__list_active');
+        this.style.background = '#4e6b5c';
+      }
+    });
+  });
+}
+toggleDataOptions();
+
 function showDisciplines() {
 
   $(".data-tab__item").on("click", function (e) {

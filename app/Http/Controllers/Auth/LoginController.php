@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -61,18 +61,28 @@ class LoginController extends Controller
     public function postLogin(Request $request)
     {
         $validator = $this->validator($request->all()); // ВОЗМОЖНА ОШИБКА
+        $role = $request['role'];
         if ($validator->fails()) {          
             return Redirect::back()->withErrors($validator)->withInput();
         };
-        if (Auth::guard('student')->attempt(['login' => $request->fullname, 'password' => $request->password])){
-            return redirect()->route('speciality');
+        switch ($role){
+            case 'Teacher':
+                if (Auth::guard('employer')->attempt(['login' => $request->fullname, 'password' => $request->password])){
+                    return redirect()->route('term.showEmployerTerms');
+                }
+                break;
+            case 'Student':
+                if (Auth::guard('student')->attempt(['login' => $request->fullname, 'password' => $request->password])){
+                    return redirect()->route('speciality');
+                }
+                break;
         }
         return Redirect::back()->withErrors(['password' => 'Невірний логін або пароль'])->withInput(); 
     }
 
     public function logout()
     {
-        Auth::guard('student')->logout();
+        Auth::logout();
         return redirect()->route('login');
     }
 }

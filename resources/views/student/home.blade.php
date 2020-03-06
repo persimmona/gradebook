@@ -7,7 +7,7 @@
     <h1 class="data-title">{{$currentTerm->semester_id }} семестр {{$currentTerm->wnpTitle->study_year_id}} навчального року</h1>
     <div class="root__overflow-container">
         <div class="root__data-container">
-            <table class="data">
+            <table class="data data_zebra">
                 <tr>
                     <th>Поточні предмети</th>
                     <th>А1</th>
@@ -38,7 +38,7 @@
                 </svg>
                 {{$term->semester_id}} семестр {{$term->wnpTitle->study_year_id}} навчального року
             </a>
-            <table class="data data{{$term->id}}"></table>
+            <table class="data data_zebra data{{$term->id}}"></table>
             @endforeach
         </div>
     </div>

@@ -47,5 +47,4 @@
         </div>
     </form>
 
-    <script src="no-not-remove"> </script>
 @endsection

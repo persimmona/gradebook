@@ -20,5 +20,10 @@ class TestResult extends Model
         return $this->belongsTo(TestDiscipline::class, 'id', 'test_discipline_id');
     }
 
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
+
 
 }

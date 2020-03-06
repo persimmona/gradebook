@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class WnpDisciplineSem extends Model
 {
@@ -34,7 +35,6 @@ class WnpDisciplineSem extends Model
     {
         return $this->hasMany(TestDiscipline::class)->orderBy('attestation_id');
     }
-
 
 
 }

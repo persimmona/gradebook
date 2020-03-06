@@ -7,7 +7,7 @@
 <p class="data-subtitle">Технології створення програмних продуктів</p>
 <div class="root__overflow-container">
     <div class="root__data-container">
-        <table class="data data--subj">
+        <table class="data data--subj data_zebra">
             <tr>
                 <th>Форма контролю</th>
                 <th>Оцінка</th>

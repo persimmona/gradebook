@@ -37,7 +37,6 @@ class Student extends Authenticatable
     public function getSemesters($studyCardId)
     {
         $wnpTitles = $this->studyCards()->find($studyCardId)->studyGroup->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
-        //id карточки будет параметром
         $wnpSemesters = new Collection();
         $currentData = $wnpTitles[0]->studyYear->currentData;
         foreach ($wnpTitles as $wnpTitle){

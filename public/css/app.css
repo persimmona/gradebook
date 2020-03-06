@@ -468,8 +468,8 @@ a:hover{
   font-size: 15px;
 }
 
-.data tr {
-  border-bottom: 2px solid #e8e8e8;
+.data_zebra tr:nth-child(even) {
+  background-color: #f7f7f7;
 }
 
 .data th,
@@ -746,3 +746,60 @@ a:hover{
   }
 }
 
+.data-options {
+  width: 40px;
+  height: 30px;
+  background: #6aa889;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.data-options:hover {
+  background: #4e6b5c !important;
+}
+
+.data-options__list {
+  display: none;
+  list-style: none;
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  right: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .12);
+}
+
+.data-options__list_active {
+  display: block;
+}
+
+.data-options__item {
+  min-height: 40px;
+  width: 175px;
+  display: flex;
+  align-items: stretch;
+}
+
+.data-options__link {
+  background: #fff;
+  text-align: left;
+  line-height: 160%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  padding: 10px 10px 10px 5px;
+}
+
+.data-options__link:hover {
+  background: #edf0fa;
+}
+
+.data-options__link svg {
+  min-width: 24px;
+  min-height: 24px;
+  margin-right: 10px;
+}

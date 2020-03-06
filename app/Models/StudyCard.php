@@ -31,4 +31,5 @@ class StudyCard extends Model
     }
 
 
+
 }

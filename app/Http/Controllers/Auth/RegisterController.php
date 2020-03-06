@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Models\Student;
@@ -99,21 +100,30 @@ class RegisterController extends Controller
     public function postRegister(Request $request)
     {
         $validator = $this->validator_v2($request->all()); // ВОЗМОЖНА ОШИБКА
+        $role = $request['role'];
         if ($validator->fails()) {          
             return Redirect::back()->withErrors($validator)->withInput();
         };
         try
         {
-            $var_student = Student::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
+            switch ($role){
+                case 'Teacher':
+                     $var_user = Employer::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
+                    break;
+                case 'Student':
+                     $var_user = Student::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
+                    break;
+            }
+
         }
         catch(ModelNotFoundException $exception) {
             return Redirect::back()->withErrors(['code' => 'Хибний код реєстрації'])->withInput();
         }
-        if($var_student->is_registered == 1) // ВОЗМОЖНА ОШИБКА
+        if( $var_user->is_registered == 1) // ВОЗМОЖНА ОШИБКА
         {
             return Redirect::back()->withErrors(['code' => 'Користувач з таким кодом вже зареєстрований'])->withInput();    
         }
-        $var_student->update(['password' => Hash::make($request['password']), 'login' => $request['fullname'], 'is_registered' => 1]);
+         $var_user->update(['password' => Hash::make($request['password']), 'login' => $request['fullname'], 'is_registered' => 1]);
         return redirect()->route('login');
     }
 }

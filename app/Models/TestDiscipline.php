@@ -59,6 +59,11 @@ class TestDiscipline extends Model
         return $testDisciplines->where('attestation_id', 2);
     }
 
+    public function scopeGetA3($query)
+    {
+        return $query->where('attestation_id', 3)->first()->studyType->study_type_name;
+    }
+
 
 
 
