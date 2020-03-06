@@ -14,7 +14,8 @@ class Student extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-  
+    protected $guard = 'student';
+
     public function studyCards()
     {
         return $this->hasMany(StudyCard::class);

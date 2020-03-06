@@ -18,9 +18,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+        if ($guard == "student" && Auth::guard($guard)->check()) {
+        return redirect()->route('speciality');
         }
+        if ($guard == "employer" && Auth::guard($guard)->check()) {
+            return redirect()->route('term.showEmployerTerms');
+        }
+//        if (Auth::guard($guard)->check()) {
+//            return redirect('/');
+//        }
 
         return $next($request);
     }

@@ -16,7 +16,7 @@ class SpecialityController extends Controller
 	
     public function show()
     {
-        $student = Auth::guard('student')->user();
+        $student = Auth::user();
 
         $studyCards=$student->studyCards;
 

@@ -11,6 +11,7 @@ class Employer extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
+    protected $guard = 'employer';
 
     public function position()
     {
