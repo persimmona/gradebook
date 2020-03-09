@@ -39,6 +39,7 @@ class WnpDiscSemEmployer extends Model
                 ['wnp_titles.study_year_id', '=',$currentStudyYear],
                 ['wnp_disc_sem_employers.employer_id', '=', $empId]
             ])
+            ->select('wnp_disc_sem_employers.*')
             ->get();
         return $wnpDiscSemEmp;
 

@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header__container">
-        <div class="header__left"><!--добавить проверку на роль-->
+        <div class="header__left">
             <p class="header__item"><a href="/">{{\Illuminate\Support\Facades\Auth::user()->last_name}}
                     {{\Illuminate\Support\Facades\Auth::user()->first_name}}</a></p>
             <a class="header__item header__item_link" href="/">Переглянути профіль</a>

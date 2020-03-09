@@ -8,9 +8,9 @@
         <div class="login-form__body">
             <h1 class="login-form__title">Зареєструватися</h1>
             <div class="float-label login-form__float-label">
-                <input class="float-label__input" type="text" name="fullname" id="fullname" value="{{ old('fullname') }}" required>
-                <label class="float-label__placeholder" for="fullname">Логін</label>
-                @error('fullname')
+                <input class="float-label__input" type="text" name="login" id="login" value="{{ old('login') }}" required>
+                <label class="float-label__placeholder" for="login">Логін</label>
+                @error('login')
                 {{ $message }}
                 @enderror
             </div>
@@ -33,12 +33,12 @@
 
             <div class="radio-field"> 
                 <label class="radio-btn">
-                    <input class="radio-btn__input" type="radio" name="role" value="Student" checked>
+                    <input class="radio-btn__input" type="radio" name="role" value="student" checked>
                     <span class="radio-btn__box"></span>
                     <span class="radio-btn__label">Студент</span>
                 </label>
                 <label class="radio-btn">
-                    <input class="radio-btn__input" type="radio" name="role" value="Teacher">
+                    <input class="radio-btn__input" type="radio" name="role" value="employer">
                     <span class="radio-btn__box"></span>
                     <span class="radio-btn__label">Викладач</span>
                 </label>

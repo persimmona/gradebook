@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
-    public function show(Request $request)
+    public function showStudDisciplines(Request $request)
     {
         $term = WnpSemester::getSemesterById($request->termId);
         $data = "<tr>
@@ -32,5 +32,10 @@ class AjaxController extends Controller
     }
 
         return $data;
+    }
+
+    public function storeTestResult()
+    {
+        
     }
 }

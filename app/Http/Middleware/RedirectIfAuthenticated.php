@@ -18,16 +18,13 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($guard == "student" && Auth::guard($guard)->check()) {
-        return redirect()->route('speciality');
-        }
-        if ($guard == "employer" && Auth::guard($guard)->check()) {
-            return redirect()->route('term.showEmployerTerms');
-        }
-//        if (Auth::guard($guard)->check()) {
-//            return redirect('/');
-//        }
+        if (Auth::guard($guard)->check()) {
 
+            if ('student' === $guard)
+                return redirect()->route('student.index');
+            if ('employer' === $guard)
+                return redirect()->route('employer.index');
+        }
         return $next($request);
     }
 }

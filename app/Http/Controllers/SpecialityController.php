@@ -23,7 +23,7 @@ class SpecialityController extends Controller
         $studyCardsCount = count($studyCards);
 
         if ($studyCardsCount <2 && view()->exists('student.home')  ) {
-		return redirect()->route('term', $studyCards[0]);
+		return redirect()->route('student.term', $studyCards[0]);
 	    }
 	    if ($studyCardsCount >=2 && view()->exists('student.specialities')) {
 		return view('student.specialities',['studyCards'=>$studyCards]);

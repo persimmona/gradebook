@@ -32,8 +32,7 @@ class TermController extends Controller
 
     public function showEmployerTerms()
     {
-//        $employer = Auth::guard('employer')->user();
-        $employer = Employer::find('SNCEVAAFH6KG');
+        $employer = Auth::guard('employer')->user();
 
         $currentData = CurrentData::first();
         $wnpDiscSemEmps = WnpDiscSemEmployer::getCurrTermEmpDisc($employer->id, $currentData);

@@ -16,7 +16,7 @@
                 </tr>
                 @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)
                 <tr>
-                    <td><a href="{{route('discipline.show', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
+                    <td><a href="{{route('discipline.showMarks', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
                     Str::slug($wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDisciplineSem->discipline->discipline_name}}</a></td>
                     <td>{{\App\Models\TestDiscipline::sumTestResultsA1($wnpDisciplineSem->testDisciplines)}} /
                         {{\App\Models\TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score')}}</td>

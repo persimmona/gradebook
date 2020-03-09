@@ -33,21 +33,9 @@ class Employer extends Authenticatable
         return $this->hasMany(TestResult::class);
     }
 
-    public function getSemesters()
+    public function getRoleAttribute()
     {
-        $wnpDiscSemEmployers = $this->wnpDiscSemEmployers;
-//        foreach ($wnpDiscSemEmployers as $wnpDiscSemEmployer)
-//        $wnpSemesters = new Collection();
-        $currentData = CurrentData::first();
-        dd($currentData);
-        foreach ($wnpTitles as $wnpTitle){
-            if($wnpTitle->study_year_id===$currentData->current_study_year_id)
-                $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->where('session_type_id', '<=',  $currentData->current_session_type_id)
-                    ->orderBy('semester_id', 'DESC')->get());
-            else
-                $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->orderBy('semester_id', 'DESC')->get());
-        }
-        return $wnpSemesters;
+        return "employer";
     }
 
 }

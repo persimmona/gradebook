@@ -30,64 +30,33 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    public function showRegisterForm()
+    public function index()
     {
         return view('auth.register');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    } 
-
-    protected function validator_v2(array $data)
-    {
-        return Validator::make($data, [
             'code' => ['required', 'string', 'max:50'],
-            'fullname' => ['required', 'string', 'email', 'max:255', 'unique:students,login'],
+            'login' => ['required', 'string', 'email', 'max:255', 'unique:students,login'],
             'password' => ['required', 'string', 'min:6']
         ], [
             'code.max' => 'Код реєстрації не може бути більше 50 символів',
-            'fullname.email' => 'Поле логін має містити адресу електронної пошти',
-            'fullname.max' => 'Адреса електронної пошти занадто довга',
-            'fullname.unique' => 'Користувач із такою адресою електронної пошти вже зареєстрований',
+            'login.email' => 'Поле логін має містити адресу електронної пошти',
+            'login.max' => 'Адреса електронної пошти занадто довга',
+            'login.unique' => 'Користувач із такою адресою електронної пошти вже зареєстрований',
             'password.min' => 'Пароль має бути не меншим за 6 символів'
         ]);
     } 
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
     protected function create(array $data)
     {
         return User::create([
@@ -97,9 +66,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function postRegister(Request $request)
+    public function signUp(Request $request)
     {
-        $validator = $this->validator_v2($request->all()); // ВОЗМОЖНА ОШИБКА
+        $validator = $this->validator($request->all());
         $role = $request['role'];
         if ($validator->fails()) {          
             return Redirect::back()->withErrors($validator)->withInput();
@@ -107,10 +76,10 @@ class RegisterController extends Controller
         try
         {
             switch ($role){
-                case 'Teacher':
+                case 'employer':
                      $var_user = Employer::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
                     break;
-                case 'Student':
+                case 'student':
                      $var_user = Student::where('registry_code', $request['code'])->firstOrFail(); // ВОЗМОЖНА ОШИБКА
                     break;
             }
@@ -123,7 +92,7 @@ class RegisterController extends Controller
         {
             return Redirect::back()->withErrors(['code' => 'Користувач з таким кодом вже зареєстрований'])->withInput();    
         }
-         $var_user->update(['password' => Hash::make($request['password']), 'login' => $request['fullname'], 'is_registered' => 1]);
-        return redirect()->route('login');
+         $var_user->update(['password' => Hash::make($request['password']), 'login' => $request['login'], 'is_registered' => 1]);
+        return redirect()->route('login.index');
     }
 }

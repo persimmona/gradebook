@@ -18,6 +18,11 @@ class StudyGroup extends Model
     	return $this->belongsToMany('App\Models\Student','study_cards','study_group_id','student_id'); 
     
    }
+
+   public function studyCards()
+   {
+        return $this->hasMany(StudyCard::class);
+   }
    
    public function division()
    {

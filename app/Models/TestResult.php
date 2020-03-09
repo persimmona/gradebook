@@ -25,5 +25,10 @@ class TestResult extends Model
         return $this->belongsTo(Employer::class);
     }
 
+    public static function getByStudyCardId(StudyCard $studyCard, TestDiscipline $testDiscipline)
+    {
+        return TestResult::where([['study_card_id', $studyCard->id], ['test_discipline_id', $testDiscipline->id]])->first();
+    }
+
 
 }

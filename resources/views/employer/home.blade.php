@@ -16,9 +16,10 @@
             </tr>
             @foreach($wnpDiscSemEmps as $wnpDiscSemEmp)
             <tr>
-                <td><a href="#">{{$wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name}}</a></td>
+                <td><a href="{{route('discipline.showJournal', ['wnpDiscSemEmployer'=>$wnpDiscSemEmp, 'slug'=>
+                    Str::slug($wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name}}</a></td>
                 <td>{{$wnpDiscSemEmp->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</td>
-                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->testDisciplines()->getA3()}}</td>
+                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->testDisciplines()->getA3()->studyType->study_type_name}}</td>
                 <td>{{$wnpDiscSemEmp->wnpDisciplineSem->hour_total}}</td>
                 <td>
                     <div class="data-options">
@@ -28,7 +29,8 @@
                         </svg>
                         <ul class="data-options__list">
                             <li class="data-options__item">
-                                <a class="data-options__link" href="#">
+                                <a class="data-options__link" href="{{route('discipline.showJournal', ['wnpDiscSemEmployer'=>$wnpDiscSemEmp, 'slug'=>
+                    Str::slug($wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name)])}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
@@ -42,7 +44,7 @@
                                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
                                         <path d="M0 0h24v24H0z" fill="none"/>
                                     </svg>
-                                    <span>Додати форму контролю</span>
+                                    <span>Додати контроль</span>
                                 </a>
                             </li>
                         </ul>

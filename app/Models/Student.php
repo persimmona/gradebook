@@ -50,4 +50,9 @@ class Student extends Authenticatable
         return $wnpSemesters;
     }
 
+    public function getRoleAttribute()
+    {
+        return "student";
+    }
+
 }

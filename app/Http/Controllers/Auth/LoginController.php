@@ -14,79 +14,39 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-     protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
-    public function showLoginForm()
+    public function index()
     {
         return view('auth.login');
-
     }
 
-    protected function validator(array $data)
+
+
+    public function signIn(Request $request)
     {
-        return Validator::make($data, [
-            'fullname' => ['required', 'string', 'email'],
-            'password' => ['required', 'string']
-        ], [
-            'fullname.email' => 'Поле логін має містити адресу електронної пошти',
+        $data = Validator::make($request->all(), [
+            'login' => 'required|email',
+            'password' => 'required'
         ]);
-    }
 
-    public function postLogin(Request $request)
-    {
-        $validator = $this->validator($request->all()); // ВОЗМОЖНА ОШИБКА
-        $role = $request['role'];
-        if ($validator->fails()) {          
-            return Redirect::back()->withErrors($validator)->withInput();
-        };
-        switch ($role){
-            case 'Teacher':
-                if (Auth::guard('employer')->attempt(['login' => $request->fullname, 'password' => $request->password])){
-                    return redirect()->route('term.showEmployerTerms');
-                }
-                break;
-            case 'Student':
-                if (Auth::guard('student')->attempt(['login' => $request->fullname, 'password' => $request->password])){
-                    return redirect()->route('speciality');
-                }
-                break;
+        if($data->fails() == false){
+            if(Auth::guard($request->role)->attempt(['login' => $request->login, 'password' => $request->password])){
+                return redirect()->route($request->role.'.index');
+            }else{
+                return redirect()->back()->withErrors(['password'=>'Невірний логін або пароль']);
+            }
+        }else{
+            return redirect()->back()->withErrors(['login'=>'Поле логін має містити адресу електронної пошти']);
         }
-        return Redirect::back()->withErrors(['password' => 'Невірний логін або пароль'])->withInput(); 
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-        dd(auth());
-        return redirect()->route('login');
+        $this->guard()->logout();
+        $request->session()->flush();
+
+        return redirect()->route('login.index');
     }
 }
 

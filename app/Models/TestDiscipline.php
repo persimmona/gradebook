@@ -61,7 +61,7 @@ class TestDiscipline extends Model
 
     public function scopeGetA3($query)
     {
-        return $query->where('attestation_id', 3)->first()->studyType->study_type_name;
+        return $query->where('attestation_id', 3)->first();
     }
 
 

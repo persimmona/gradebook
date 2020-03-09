@@ -653,7 +653,7 @@ a:hover{
   align-self: flex-end;
   text-decoration: none;
   color: #6aa889;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .home-link svg {
@@ -668,82 +668,6 @@ a:hover{
 }
 .home-link:hover .stroke {
   fill: #3b5b4a;
-}
-
-@media screen and (max-aspect-ratio: 8/5), screen and (max-width: 1024px) {
-  .curtain {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    display: none;
-  }
-
-  .header-mobile {
-    display: block;
-  }
-
-  .data {
-    font-size: 13.5px;
-  }
-
-  .data th,
-  .data td {
-    padding: 13px 10px;
-  }
-
-  .data-title {
-    margin: 25px 0 10px;
-    font-size: 24px;
-  }
-
-  .data-tab__item {
-    font-size: 16px;
-  }
-
-  .root__data-tab {
-    margin-top: 30px;
-  }
-
-  .spec-container {
-    margin-top: 25px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .spec-card {
-    padding: 15px;
-  }
-
-  .spec-card__title {
-    font-size: 15.5px;
-  }
-
-  .spec-card__subtitle {
-    font-size: 13.5px;
-  }
-
-  .spec-card__aside {
-    bottom: 15px;
-    font-size: 13.5px;
-  }
-
-  .spec-card-link__triangle {
-    display: none;
-  }
-
-  .spec-card-link__text {
-    right: 15px;
-    bottom: 20px;
-    color: #3b5b4a;
-    font-weight: 700;
-  }
-
-  .spec-card-link__text .stroke {
-    fill: #3b5b4a;
-  }
 }
 
 .data-options {
@@ -802,4 +726,205 @@ a:hover{
   min-width: 24px;
   min-height: 24px;
   margin-right: 10px;
+}
+
+.journal {
+  overflow: hidden;
+
+  margin: 25px auto 0;
+
+  color: #2a2a2a;
+  border-collapse: collapse;
+
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.journal th {
+  vertical-align: bottom;
+
+  font-weight: normal;
+}
+
+.journal th span {
+  padding-bottom: 4px;
+
+  transform: rotate(180deg);
+
+  writing-mode: vertical-lr;
+}
+
+.journal th {
+  position: relative;
+
+  padding: 10px;
+
+  border: 2px solid #e8e8e8;
+}
+
+.journal td{
+  position: relative;
+  border: 2px solid #e8e8e8;
+}
+.journal td input{
+  font-size: 16px;
+  width: 40px;
+  padding: 11px 4px;
+  border: none;
+}
+
+.journal td input:disabled{
+  background-color: #f7f7f7;
+}
+
+.journal td:not(:first-child) {
+  text-align: center;
+
+  font-weight: 500;
+}
+
+.journal tr:not(:first-child) td:first-child {
+  padding: 10px 20px 10px 10px;
+
+  white-space: nowrap;
+
+}
+.journal__expression{
+  background: #edf0fa;
+}
+
+.journal__corner {
+  padding: 10px;
+
+}
+
+.journal__corner svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.journal__col-title {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  text-align: right;
+
+  font-weight: 500;
+}
+
+.journal__row-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  max-width: 70%;
+
+  font-weight: 500;
+}
+
+.journal__add {
+  cursor: pointer;
+}
+
+.journal__add svg {
+  transform: scale(1.25);
+}
+
+/*.journal tr:not(:first-child):hover {*/
+  /*background: #edf0fa;*/
+/*}*/
+
+.journal tr:not(:first-child) input:hover {
+  background: #edf0fa;
+}
+
+/*.journal td:not(:first-child):hover::after,*/
+/*.journal th:not(:first-child):hover::after {*/
+  /*position: absolute;*/
+  /*z-index: -1;*/
+  /*top: -5000px;*/
+  /*left: 0;*/
+
+  /*width: 100%;*/
+  /*height: 10000px;*/
+
+  /*content: '';*/
+
+  /*background-color: #edf0fa;*/
+/*}*/
+/*.journal td:not(:first-child):hover::after{*/
+  /**/
+/*}*/
+
+/* ============ Медиа-запросы ============ */
+
+@media screen and (max-aspect-ratio: 8/5),
+screen and (max-width: 1024px) {
+  .curtain {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: none;
+  }
+  .header-mobile {
+    display: block;
+  }
+  .data {
+    font-size: 13.5px;
+  }
+  .data th,
+  .data td {
+    padding: 13px 10px;
+  }
+  .data-title {
+    margin: 25px 0 20px;
+
+    font-size: 24px;
+  }
+  .data-tab__item {
+    font-size: 16px;
+  }
+  .root__data-tab {
+    margin-top: 30px;
+  }
+  .spec-container {
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .spec-card {
+    padding: 15px;
+  }
+  .spec-card__title {
+    font-size: 15.5px;
+  }
+  .spec-card__subtitle {
+    font-size: 13.5px;
+  }
+  .spec-card__aside {
+    bottom: 15px;
+
+    font-size: 13.5px;
+  }
+  .spec-card-link__triangle {
+    display: none;
+  }
+  .spec-card-link__text {
+    right: 15px;
+    bottom: 20px;
+
+    color: #3b5b4a;
+
+    font-weight: 700;
+  }
+  .spec-card-link__text .stroke {
+    fill: #3b5b4a;
+  }
 }
