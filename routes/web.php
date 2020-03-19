@@ -28,13 +28,22 @@ Route::group(['middleware' => 'auth:student'], function(){
     Route::get('discipline/{wnpDisciplineSem}-{slug}', 'DisciplineController@showMarks')->name('discipline.showMarks');
 //    Route::get('profile', 'StudentController@show')->name('profile');
 
-    Route::post('/ajaxRequest', 'AjaxController@showStudDisciplines')->name('ajax');
+    Route::post('/ajaxRequest', 'AjaxController@showStudDisciplines');
 });
 
 Route::group(['middleware' => 'auth:employer'], function(){
 
     Route::get('term', 'TermController@showEmployerTerms')->name('employer.index');
     Route::get('term/{wnpDiscSemEmployer}-{slug}', 'DisciplineController@showJournal')->name('discipline.showJournal');
+
+    Route::post('/storeTestResult', 'AjaxController@storeTestResult');
+    Route::delete('/destroyTestResult', 'AjaxController@destroyTestResult');
+
+    Route::get('study-types/create', 'StudyTypeController@create')->name('study-type.create');
+    Route::post('study-types', 'StudyTypeController@store')->name('study-type.store');
+
+    Route::post('disciplines', 'DisciplineController@store')->name('discipline.store');
+    Route::post('disciplines-copy', 'DisciplineController@storeCopy')->name('discipline.storeCopy');
 
 });
 

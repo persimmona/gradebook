@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\TestDiscipline;
+use App\Models\TestResult;
 use App\Models\WnpSemester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
@@ -34,8 +36,27 @@ class AjaxController extends Controller
         return $data;
     }
 
-    public function storeTestResult()
+    public function storeTestResult(Request $request)
     {
-        
+        $employerId = auth()->user()->id;
+
+        DB::table('test_results')->updateOrInsert(
+        [   'test_discipline_id' =>$request->testDisciplineId,
+            'study_card_id' => $request->studyCardId,
+        ],
+        [
+            'value' => $request->value,
+            'employer_id' => $employerId,
+        ]
+        );
+    }
+
+    public function destroyTestResult(Request $request)
+    {
+        DB::table('test_results')->where([
+            ['test_discipline_id',$request->testDisciplineId],
+            ['study_card_id',$request->studyCardId]
+        ])->delete();
+
     }
 }

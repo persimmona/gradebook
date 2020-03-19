@@ -12,6 +12,7 @@
                 <th>Група</th>
                 <th>Кінцева форма контролю</th>
                 <th>Кількість годин</th>
+                <th>Кількість кредитів</th>
                 <th>Опції</th>
             </tr>
             @foreach($wnpDiscSemEmps as $wnpDiscSemEmp)
@@ -19,8 +20,9 @@
                 <td><a href="{{route('discipline.showJournal', ['wnpDiscSemEmployer'=>$wnpDiscSemEmp, 'slug'=>
                     Str::slug($wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name}}</a></td>
                 <td>{{$wnpDiscSemEmp->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</td>
-                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->testDisciplines()->getA3()->studyType->study_type_name}}</td>
+                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->studyType->study_type_name}}</td>
                 <td>{{$wnpDiscSemEmp->wnpDisciplineSem->hour_total}}</td>
+                <td>{{round($wnpDiscSemEmp->wnpDisciplineSem->hour_total/30, 2)}}</td>
                 <td>
                     <div class="data-options">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">

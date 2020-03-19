@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('layouts.auth')
 
 @section('title','Авторизуватися — Журнал Оцінок')
 
@@ -38,7 +38,7 @@
 
             <button class="login-form__submit" type="submit">Увійти</button>
 
-            <a href="{{route('register.index')}}" class="login-form__link">Зараэструватися</a>
+            <a href="{{route('register.index')}}" class="login-form__link">Зареэструватися</a>
         </div>
 
 

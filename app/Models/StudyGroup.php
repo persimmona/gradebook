@@ -50,4 +50,6 @@ class StudyGroup extends Model
         return $this->belongsTo(EducationForm::class);
     }
 
+
+
 }

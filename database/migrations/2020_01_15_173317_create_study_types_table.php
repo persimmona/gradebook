@@ -14,14 +14,15 @@ class CreateStudyTypesTable extends Migration
     public function up()
     {
         Schema::create('study_types', function (Blueprint $table) {
-            $table->decimal('id', 2, 0);
-            $table->string('study_type_name',80);
+            $table->bigInteger('id')->autoIncrement();
+            $table->string('study_type_name',80)->unique();
             $table->string('study_type_short_name',80);
-            $table->boolean('is_comulative_score');
-            $table->integer('study_type_max_score');
-            $table->integer('study_type_max_comulative_score');
-            $table->boolean('is_for_test');
+            $table->boolean('is_comulative_score')->nullable();
+            $table->integer('study_type_max_score')->nullable();
+            $table->integer('study_type_max_comulative_score')->nullable();
+            $table->boolean('is_for_test')->nullable();
             $table->integer('edit_emp_type_id')->nullable();
+            $table->integer('division_id')->nullable()->unique();
         });
     }
 

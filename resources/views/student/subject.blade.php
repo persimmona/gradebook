@@ -3,20 +3,20 @@
 @section("title", "Предмет — Журнал Оцінок")
 
 @section('content')
-<h1 class="data-title">5 семестр 2019-2020 навчального року</h1>
-<p class="data-subtitle">Технології створення програмних продуктів</p>
+<h1 class="data-title">{{$wnpDisciplineSem->wnpSemester->semester_id}} семестр {{$wnpDisciplineSem->wnpSemester->wnpTitle->study_year_id}} навчального року</h1>
+<p class="data-subtitle">{{$wnpDisciplineSem->discipline->discipline_name}}</p>
 <div class="root__overflow-container">
     <div class="root__data-container">
         <table class="data data--subj data_zebra">
             <tr>
-                <th>Форма контролю</th>
+                <th>Контроль</th>
                 <th>Оцінка</th>
                 <th>А1</th>
                 <th>А2</th>
             </tr>
             @foreach($testDisciplines as $testDiscipline)
             <tr>
-                <td>{{$testDiscipline->studyType->study_type_name}}</td>
+                <td>{{$testDiscipline->studyType->study_type_name}} {{$testDiscipline->study_type_description}}</td>
                 <td><? echo isset($testDiscipline->testResults[0]) ? $testDiscipline->testResults[0]->value : 0 ?> / {{$testDiscipline->max_score}}</td>
                 <td><? echo $testDiscipline->attestation_id == 1 ?  '<span class="fat-plus">+</span>' : ''?></td>
                 <td><? echo $testDiscipline->attestation_id == 2 ?  '<span class="fat-plus">+</span>' : ''?></td>

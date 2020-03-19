@@ -2,7 +2,7 @@
     <div class="header__container">
         <div class="header__left">
             <p class="header__item"><a href="/">{{\Illuminate\Support\Facades\Auth::user()->last_name}}
-                    {{\Illuminate\Support\Facades\Auth::user()->first_name}}</a></p>
+                    {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->middle_name}}</a></p>
             <a class="header__item header__item_link" href="/">Переглянути профіль</a>
         </div>
         <div class="header__right">
@@ -16,7 +16,7 @@
     <div class="header-mobile__top">
         <div class="user-info">
             <div class="user-info__name">{{\Illuminate\Support\Facades\Auth::user()->last_name}}
-                {{\Illuminate\Support\Facades\Auth::user()->first_name}}</div>
+                {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->middle_name}}</div>
             <div class="user-info__date">{{\App\Models\CurrentData::getCurrentWeekNumber()}} тиждень (<? echo date("d.m.Y") ?>)</div>
         </div>
         <div class="hamburger">

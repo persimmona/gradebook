@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class TestResult extends Model
 {
     protected $primaryKey = ['test_discipline_id', 'study_card_id'];
     public $incrementing = false;
     public $timestamps = false;
+    protected $guarded = [];
 
     public function studyCard()
     {

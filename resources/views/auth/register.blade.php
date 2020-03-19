@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('layouts.auth')
 
 @section('title','Зареєструватися — Журнал Оцінок')
 
