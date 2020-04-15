@@ -66,7 +66,7 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
 
                 <td id="{{$testDiscipline->id}}"><input type=text name=testResult id=testResult value="<? $testResult = \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                     echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                        echo $wnpDiscSemEmployer->emp_type_id == $testDiscipline->studyType->edit_emp_type_id?
+                        echo $wnpDiscSemEmployer->emp_type_id == 1?
                             '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                 </td>
 
@@ -77,7 +77,7 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
                 @foreach(\App\Models\TestDiscipline::getA2($testDisciplines) as $testDiscipline)
                     <td id="{{$testDiscipline->id}}"><input type=text name=testResult id=testResult value="<? $testResult = \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                         echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                            echo $wnpDiscSemEmployer->emp_type_id == $testDiscipline->studyType->edit_emp_type_id?
+                            echo $wnpDiscSemEmployer->emp_type_id == 1?
                                 '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                     </td>
 
@@ -90,7 +90,7 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
                     <input type=text name=testResult id=testResult value="<? $testResult =
                         \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                     echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                        echo $wnpDiscSemEmployer->emp_type_id == $testDiscipline->studyType->edit_emp_type_id?
+                        echo $wnpDiscSemEmployer->emp_type_id == 1?
                         '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                 </td>
                 @endforeach
