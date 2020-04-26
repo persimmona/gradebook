@@ -31,7 +31,7 @@ class TestDiscipline extends Model
 
     public function studySubtype()
     {
-        return $this->belongsTo(StudySubtype::class);
+        return $this->belongsTo(StudySubtype::class, 'study_sub_type_id');
     }
 
     public static function sumTestResultsA1($testDisciplines) //сумма оценок для аттестаций

@@ -23,7 +23,7 @@ class DisciplineController extends Controller
     public function showJournal(WnpDiscSemEmployer $wnpDiscSemEmployer)
     {
         $currentData = CurrentData::first();
-        $studySubtypes = StudySubtype::all();
+
         return view('employer.journal', compact('wnpDiscSemEmployer', 'currentData', 'studySubtypes'));
     }
 
@@ -31,7 +31,7 @@ class DisciplineController extends Controller
     {
         $data = Validator::make($request->all(), [
             'max_score' => 'required|numeric',
-            'study_type_description' => 'required|numeric'
+            'study_type_description' => 'nullable|numeric'
         ], [
             'max_score.required' => 'Поля обов\'язкові для заповнення!',
             'max_score.numeric' => 'Запис повинен містить тільки цифри!',
@@ -62,7 +62,20 @@ class DisciplineController extends Controller
                 'wnp_discipline_sem_id'=>$request->wnp_discipline_sem_id,
             ]);
         }
+    }
 
+    public function showStudySubTypes(Request $request)
+    {
+        $studySubTypes = \App\Models\StudySubtype::getByStudyTypeId($request->study_type_id);
+        $data = "<option value=\"\">Не обов'язково</option>";
+        if(is_null($studySubTypes)){
+            return $data;
+        }else{
+            foreach($studySubTypes as $studySubType){
+                $data.="<option value=\"{$studySubType->id}\">{$studySubType->study_subtype_name}</option>";
+            }
+            return $data;
+        }
 
     }
 }

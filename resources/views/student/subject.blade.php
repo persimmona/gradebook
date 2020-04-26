@@ -3,10 +3,15 @@
 @section("title", "Предмет — Журнал Оцінок")
 
 @section('content')
-<h1 class="data-title">{{$wnpDisciplineSem->wnpSemester->semester_id}} семестр {{$wnpDisciplineSem->wnpSemester->wnpTitle->study_year_id}} навчального року</h1>
-<p class="data-subtitle">{{$wnpDisciplineSem->discipline->discipline_name}}</p>
+
+
 <div class="root__overflow-container">
     <div class="root__data-container">
+        <p class="data-text mt-5">{{$wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->faculty()->division_name}} &#8211;
+            {{$wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->studyProgram->speciality->speciality_name}} &#8211;
+            {{$wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</p>
+        <h1 class="data-title mt-2">{{$wnpDisciplineSem->wnpSemester->semester_id}} семестр {{$wnpDisciplineSem->wnpSemester->wnpTitle->study_year_id}} навчального року</h1>
+        <p class="data-subtitle">{{$wnpDisciplineSem->discipline->discipline_name}}</p>
         <table class="data data--subj data_zebra">
             <tr>
                 <th>Контроль</th>

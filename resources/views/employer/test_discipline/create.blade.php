@@ -8,23 +8,20 @@
             <h3 class="modal-title">Додати контроль</h3>
         </div>
         <div class="modal__body">
-            <div class="modal-control">
+            <div class="modal-control" id = 'study_type'>
                 <label class="modal-control__label" for="study_type_id">Форма контролю</label>
                 <div class="custom-select">
                     <select name="study_type_id">
                         @foreach($currentStudyTypes as $currentStudyType)
-                        <option value="{{$currentStudyType->id}}">{{$currentStudyType->study_type_name}}</option>
+                            <option value="{{$currentStudyType->id}}">{{$currentStudyType->study_type_name}}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-
-
-
             <div class="modal-control-group">
                 <div class="modal-control">
                     <label class="modal-control__label" for="study_type_description">№ контролю</label>
-                    <input class="modal-control__input" type="text" name="study_type_description" id="study_type_description" required>
+                    <input class="modal-control__input" type="text" name="study_type_description" id="study_type_description">
                 </div>
                 <div class="modal-control">
                     <label class="modal-control__label" for="max_score">Оцінка</label>
@@ -33,14 +30,10 @@
             </div>
 
 
-            <div class="modal-control">
+            <div class="modal-control" id = 'study_subtype'>
                 <label class="modal-control__label" for="study_sub_type_id">Етапи роботи</label>
                 <div class="custom-select">
                     <select name="study_sub_type_id">
-                        <option value="">Не обов'язково</option>
-                        @foreach($studySubtypes as $studySubtype)
-                            <option value="{{$studySubtype->id}}">{{$studySubtype->study_subtype_name}}</option>
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -79,3 +72,6 @@
         </div>
     </form>
 </div>
+
+
+

@@ -4,14 +4,18 @@
 
 @section('content')
 
-    <h1 class="data-title">{{$currentTerm->semester_id }} семестр {{$currentTerm->wnpTitle->study_year_id}} навчального року</h1>
     <div class="root__overflow-container">
         <div class="root__data-container">
+            <p class="data-text mt-5">{{$studyCard->studyGroup->faculty()->division_name}} &#8211;
+                {{$studyCard->studyGroup->studyProgram->speciality->speciality_name}} &#8211;
+               {{$studyCard->studyGroup->study_group_name}}</p>
+            <h1 class="data-title mt-2">{{$currentTerm->semester_id }} семестр {{$currentTerm->wnpTitle->study_year_id}} навчального року</h1>
             <table class="data data_zebra">
                 <tr>
                     <th>Поточні предмети</th>
                     <th>А1</th>
                     <th>А2</th>
+                    <th>Форма контролю</th>
                     <th>Підсумки</th>
                 </tr>
                 @foreach($currentTerm->wnpDisciplineSems as $wnpDisciplineSem)
@@ -22,6 +26,7 @@
                         {{\App\Models\TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score')}}</td>
                     <td>{{\App\Models\TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines)}} /
                         {{\App\Models\TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score')}}</td>
+                    <td>{{$wnpDisciplineSem->studyType->study_type_name}}</td>
                     <td>{{\App\Models\TestDiscipline::sumTestResults($wnpDisciplineSem->testDisciplines)}} / 100</td>
                 </tr>
                 @endforeach

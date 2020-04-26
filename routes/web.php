@@ -39,11 +39,12 @@ Route::group(['middleware' => 'auth:employer'], function(){
     Route::post('/storeTestResult', 'AjaxController@storeTestResult');
     Route::delete('/destroyTestResult', 'AjaxController@destroyTestResult');
 
-    Route::get('study-types/create', 'StudyTypeController@create')->name('study-type.create');
-    Route::post('study-types', 'StudyTypeController@store')->name('study-type.store');
+//    Route::get('study-types/create', 'StudyTypeController@create')->name('study-type.create');
+//    Route::post('study-types', 'StudyTypeController@store')->name('study-type.store');
 
     Route::post('disciplines', 'DisciplineController@store')->name('discipline.store');
     Route::post('disciplines-copy', 'DisciplineController@storeCopy')->name('discipline.storeCopy');
+    Route::post('disciplines-study-subtype', 'DisciplineController@showStudySubTypes')->name('discipline.showStudySubTypes');
 
 });
 

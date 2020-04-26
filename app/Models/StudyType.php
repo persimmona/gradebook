@@ -19,8 +19,14 @@ class StudyType extends Model
         return $this->hasMany(TestDiscipline::class);
     }
 
-    public static function getStudyTypesByDivisionId($divisionId)
+    public function studySubtype()
     {
-        return StudyType::where('division_id', $divisionId)->get();
+        return $this->hasMany(StudySubtype::class);
     }
+
+
+//    public static function getStudyTypesByDivisionId($divisionId)
+//    {
+//        return StudyType::where('division_id', $divisionId)->get();
+//    }
 }

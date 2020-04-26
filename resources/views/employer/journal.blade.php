@@ -6,14 +6,15 @@
 <?
 $testDisciplines = $wnpDiscSemEmployer->wnpDisciplineSem->testDisciplines;
 $division = auth()->user()->division;
-$currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division->id);
+$currentStudyTypes = \App\Models\StudyType::get();
 ?>
+
 <h1 class="data-title">{{$currentData->sessionType->semester_type_name}} семестр {{$currentData->current_study_year_id}} навчального року</h1>
 <p class="data-subtitle">{{$wnpDiscSemEmployer->wnpDisciplineSem->discipline->discipline_name}}</p>
 <p class="data-subtitle">{{$wnpDiscSemEmployer->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</p>
-@if(auth()->user()->postition_id != 565)
-<button id="btnCreateStudyType" class="btn">Додати форму контролю</button>
-@endif
+{{--@if(auth()->user()->postition_id != 565)--}}
+{{--<button id="btnCreateStudyType" class="btn">Додати форму контролю</button>--}}
+{{--@endif--}}
 <div class="root__overflow-container">
     <div class="root__data-container">
 
@@ -35,7 +36,8 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
                 </td>
                 @foreach(\App\Models\TestDiscipline::getA1($testDisciplines) as $testDiscipline)
                 <th>
-                    <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}</span>
+                    <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
+                        {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span>
                 </th>
                 @endforeach
                 <th class="journal__expression"><span>Атестація 1</span></th>
@@ -77,8 +79,8 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
                 @foreach(\App\Models\TestDiscipline::getA2($testDisciplines) as $testDiscipline)
                     <td id="{{$testDiscipline->id}}"><input type=text name=testResult id=testResult value="<? $testResult = \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                         echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                            echo $wnpDiscSemEmployer->emp_type_id == 1?
-                                '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
+                            echo $wnpDiscSemEmployer->emp_type_id == 2?
+                                'disabled':''?> maxscore = {{$testDiscipline->max_score}}>
                     </td>
 
                 @endforeach
@@ -113,7 +115,7 @@ $currentStudyTypes = \App\Models\StudyType::getStudyTypesByDivisionId($division-
 </div>
 @endif
 
-@include('employer.study_type.create')
+{{--@include('employer.study_type.create')--}}
 @include('employer.test_discipline.create')
 @include('employer.test_discipline.copy')
 @include('employer.test_discipline.exception')

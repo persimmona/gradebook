@@ -480,6 +480,7 @@ a:hover{
 
 .data-text {
   margin: 0 auto 0;
+  text-align: center;
 }
 
 .root__overflow-container {
@@ -1279,3 +1280,10 @@ screen and (max-width: 1024px) {
 
 
 }
+.mt-2{
+  margin-top: 10px;
+}
+.mt-5{
+  margin-top: 45px;
+}
+
