@@ -24,7 +24,7 @@ class DisciplineController extends Controller
     {
         $currentData = CurrentData::first();
 
-        return view('employer.journal', compact('wnpDiscSemEmployer', 'currentData', 'studySubtypes'));
+        return view('employer.journal', compact('wnpDiscSemEmployer', 'currentData'));
     }
 
     public function store(Request $request)
