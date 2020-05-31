@@ -34,13 +34,16 @@ Route::group(['middleware' => 'auth:student'], function(){
 Route::group(['middleware' => 'auth:employer'], function(){
 
     Route::get('term', 'TermController@showEmployerTerms')->name('employer.index');
-    Route::get('term/{wnpDiscSemEmployer}-{slug}', 'DisciplineController@showJournal')->name('discipline.showJournal');
+    Route::get('term/{wnpDisciplineSem}-{slug}', 'DisciplineController@showJournal')->name('discipline.showJournal');
 
     Route::post('/storeTestResult', 'AjaxController@storeTestResult');
     Route::delete('/destroyTestResult', 'AjaxController@destroyTestResult');
 
 //    Route::get('study-types/create', 'StudyTypeController@create')->name('study-type.create');
 //    Route::post('study-types', 'StudyTypeController@store')->name('study-type.store');
+    Route::get('division', 'DivisionController@index')->name('division.index');
+    Route::post('division-editemp', 'DivisionController@storeAddEditEmpTypeModal');
+    Route::delete('division-editemp-delete', 'DivisionController@destroyAddEditEmpTypeModal');
 
     Route::post('disciplines', 'DisciplineController@store')->name('discipline.store');
     Route::post('disciplines-copy', 'DisciplineController@storeCopy')->name('discipline.storeCopy');

@@ -36,7 +36,9 @@ class TermController extends Controller
 
         $currentData = CurrentData::first();
         $wnpDiscSemEmps = WnpDiscSemEmployer::getCurrTermEmpDisc($employer->id, $currentData);
-        return view('employer.home', compact('currentData', 'wnpDiscSemEmps'));
+//        dd($wnpDiscSemEmps->map->wnpDisciplineSem->flatten());
+        $wnpDisciplineSems = $wnpDiscSemEmps->map->wnpDisciplineSem->flatten();
+        return view('employer.home', compact('currentData', 'wnpDisciplineSems'));
     }
 
 }

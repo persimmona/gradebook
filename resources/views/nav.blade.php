@@ -3,7 +3,9 @@
         <div class="header__left">
             <p class="header__item"><a href="/">{{\Illuminate\Support\Facades\Auth::user()->last_name}}
                     {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->middle_name}}</a></p>
-            {{--<a class="header__item header__item_link" href="/">Переглянути профіль</a>--}}
+            @if(auth()->user()->position->is_zavkaf)
+                <a class="header__item header__item_link" href="{{route('division.index')}}">Кафедра</a>
+            @endif
         </div>
         <div class="header__right">
             <p class="header__item">{{\App\Models\CurrentData::getCurrentWeekNumber()}} тиждень (<? echo date("d.m.Y") ?>)</p>
@@ -26,7 +28,9 @@
         </div>
     </div>
     <div class="mobile-menu">
-        {{--<a class="mobile-menu__item" href="/">Переглянути профіль</a>--}}
+        @if(auth()->user()->position->is_zavkaf)
+            <a class="mobile-menu__item" href="{{route('division.index')}}">Кафедра</a>
+        @endif
         <a class="mobile-menu__item" href="{{route('logout')}}">Вийти</a>
     </div>
 </header>

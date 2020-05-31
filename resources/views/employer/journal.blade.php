@@ -4,14 +4,14 @@
 
 @section('content')
 <?
-$testDisciplines = $wnpDiscSemEmployer->wnpDisciplineSem->testDisciplines;
+$testDisciplines = $wnpDisciplineSem->testDisciplines;
 $division = auth()->user()->division;
 $currentStudyTypes = \App\Models\StudyType::get();
+$empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
 ?>
-
 <h1 class="data-title">{{$currentData->sessionType->semester_type_name}} семестр {{$currentData->current_study_year_id}} навчального року</h1>
-<p class="data-subtitle">{{$wnpDiscSemEmployer->wnpDisciplineSem->discipline->discipline_name}}</p>
-<p class="data-subtitle">{{$wnpDiscSemEmployer->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</p>
+<p class="data-subtitle">{{ $wnpDisciplineSem->discipline->discipline_name}}</p>
+<p class="data-subtitle">{{ $wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</p>
 {{--@if(auth()->user()->postition_id != 565)--}}
 {{--<button id="btnCreateStudyType" class="btn">Додати форму контролю</button>--}}
 {{--@endif--}}
@@ -60,7 +60,7 @@ $currentStudyTypes = \App\Models\StudyType::get();
                     </svg>
                 </th>
             </tr>
-            @foreach($wnpDiscSemEmployer->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->studyCards()->orderByStudLastName() as $studyCard)
+            @foreach( $wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->studyCards()->orderByStudLastName() as $studyCard)
             <tr id="{{$studyCard->id}}">
                 <td>{{$studyCard->student->last_name}} {{$studyCard->student->first_name}}</td>
 
@@ -68,8 +68,7 @@ $currentStudyTypes = \App\Models\StudyType::get();
 
                 <td id="{{$testDiscipline->id}}"><input type=text name=testResult id=testResult value="<? $testResult = \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                     echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                        echo $wnpDiscSemEmployer->emp_type_id == 1?
-                            '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
+                        echo $empType == 1? '':'disabled' ; elseif($empType==0) echo 'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                 </td>
 
                 @endforeach
@@ -79,8 +78,7 @@ $currentStudyTypes = \App\Models\StudyType::get();
                 @foreach(\App\Models\TestDiscipline::getA2($testDisciplines) as $testDiscipline)
                     <td id="{{$testDiscipline->id}}"><input type=text name=testResult id=testResult value="<? $testResult = \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                         echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                            echo $wnpDiscSemEmployer->emp_type_id == 2?
-                                'disabled':''?> maxscore = {{$testDiscipline->max_score}}>
+                            echo $empType == 1? '':'disabled' ; elseif($empType==0) echo 'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                     </td>
 
                 @endforeach
@@ -92,8 +90,7 @@ $currentStudyTypes = \App\Models\StudyType::get();
                     <input type=text name=testResult id=testResult value="<? $testResult =
                         \App\Models\TestResult::getByStudyCardId($studyCard, $testDiscipline);
                     echo isset($testResult) ? $testResult->value : '' ?>" <? if(isset($testDiscipline->studyType->edit_emp_type_id))
-                        echo $wnpDiscSemEmployer->emp_type_id == 1?
-                        '':'disabled'?> maxscore = {{$testDiscipline->max_score}}>
+                        echo $empType == 1? '':'disabled'; elseif($empType==0) echo 'disabled'?> maxscore = {{$testDiscipline->max_score}}>
                 </td>
                 @endforeach
 
@@ -103,23 +100,99 @@ $currentStudyTypes = \App\Models\StudyType::get();
             </table>
     </div>
 </div>
-@if($wnpDiscSemEmployer->emp_type_id==1)
 <div class="home-link-container home-link-container_journal">
-    <a class="home-link" href="/">
+    <a class="home-link" href="{{ url()->previous() }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
             <path class="stroke" fill="#fff" d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z"/>
             <path fill="none" d="M0 0h24v24H0z"/>
         </svg>
-        На головну
+        Назад
     </a>
 </div>
-@endif
 
 {{--@include('employer.study_type.create')--}}
 @include('employer.test_discipline.create')
 @include('employer.test_discipline.copy')
 @include('employer.test_discipline.exception')
 
+<script>
+    function customSelectForStudySubtype(){
+        let x, s, study_type_id, study_subtype, a, j, c, b;
+        s = document.getElementById("study_type").
+        getElementsByClassName("select-selected")[0];//div select-selected
+        x = document.getElementById("study_subtype");
+        study_subtype = document.getElementsByName('study_sub_type_id')[0];//select
+        a = x.getElementsByClassName("select-selected")[0];//div select-selected
+        b = x.getElementsByClassName("select-items")[0];//div
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "/disciplines-study-subtype",
+            type: "post",
+            data: {'study_type_id':s.getAttribute('study_type_id')},
+            success: function (data) {
+                study_subtype.innerHTML = data;
+                a.innerHTML = study_subtype.options[study_subtype.selectedIndex].innerHTML;
+                b.innerHTML = "";
+                study_subtype.innerHTML = data;
+                makeSelectItems();
+            },
+        });
+        $(s).on('click',function () {
+            if(!$(s).hasClass('select-arrow-active')){
+                study_type_id = s.getAttribute('study_type_id');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "/disciplines-study-subtype",
+                    type: "post",
+                    data: {'study_type_id':study_type_id},
+                    success: function (data) {
+                        b.innerHTML = "";
+                        study_subtype.innerHTML = data;
+                        makeSelectItems();
+                    },
+                });
+            }
+        });
+        function makeSelectItems() {
+            for (j = 0; j < study_subtype.length; j++) {
+                c = document.createElement("DIV");
+                c.innerHTML = study_subtype.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+        }
+    }
+    $(document).ready(function() {
+        customSelectForStudySubtype();
+    });
+</script>
 
 <script src="{{ asset('js/app.js')}}" defer></script>
+
 @endsection

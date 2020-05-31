@@ -57,7 +57,7 @@
                     </label>
                 </div>
             </div>
-            <input type="hidden" name="wnp_discipline_sem_id" value="{{$wnpDiscSemEmployer->wnpDisciplineSem->id}}">
+            <input type="hidden" name="wnp_discipline_sem_id" value="{{$wnpDisciplineSem->id}}">
             <input type="hidden" id="is_current_study_types" value="{{$currentStudyTypes->isEmpty()}}">
 
             <div class="error"></div>

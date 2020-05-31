@@ -38,4 +38,9 @@ class Employer extends Authenticatable
         return "employer";
     }
 
+    public function getShortNameAttribute()
+    {
+        return substr($this->first_name, 0,2). ".".substr($this->middle_name, 0,2).".";
+    }
+
 }

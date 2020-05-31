@@ -703,6 +703,45 @@ a:hover{
 .home-link:hover .stroke {
   fill: #3b5b4a;
 }
+.data-add__list {
+  list-style: none;
+}
+.data__button{
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.data__button svg {
+  align-self: center;
+  pointer-events: none;
+}
+
+.data-add__button{
+  background: #6aa889;
+}
+.data-add__button:hover {
+  background: #4e6b5c;
+}
+
+.data-delete__button{
+  margin-left: 4px;
+  background: indianred;
+}
+
+.data-delete__button:hover{
+  background:darkred;
+}
+.data-add__item {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+.data-add__item:last-child{
+  padding-bottom:0;
+}
 
 .data-options {
   width: 40px;
@@ -800,6 +839,10 @@ a:hover{
 .journal td{
   position: relative;
   border: 2px solid #e8e8e8;
+}
+
+.journal td:focus, .journal td input:focus{
+  outline:none;
 }
 .journal td input{
   font-family: 'Montserrat', sans-serif;

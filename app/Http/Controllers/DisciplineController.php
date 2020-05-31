@@ -20,11 +20,11 @@ class DisciplineController extends Controller
         return view('student.subject', compact('testDisciplines', 'wnpDisciplineSem'));
     }
 
-    public function showJournal(WnpDiscSemEmployer $wnpDiscSemEmployer)
+    public function showJournal(WnpDisciplineSem $wnpDisciplineSem)
     {
         $currentData = CurrentData::first();
 
-        return view('employer.journal', compact('wnpDiscSemEmployer', 'currentData'));
+        return view('employer.journal', compact('wnpDisciplineSem', 'currentData'));
     }
 
     public function store(Request $request)

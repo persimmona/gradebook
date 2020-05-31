@@ -194,81 +194,27 @@ function customSelect() {
 }
 customSelect();
 
-function customSelectForStudySubtype(){
-  let x, s, study_type_id, study_subtype, a, j, c, b;
-  s = document.getElementById("study_type").
-  getElementsByClassName("select-selected")[0];//div select-selected
-  x = document.getElementById("study_subtype");
-  study_subtype = document.getElementsByName('study_sub_type_id')[0];//select
-  a = x.getElementsByClassName("select-selected")[0];//div select-selected
-  b = x.getElementsByClassName("select-items")[0];//div
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-  $.ajax({
-    url: "/disciplines-study-subtype",
-    type: "post",
-    data: {'study_type_id':s.getAttribute('study_type_id')},
-    success: function (data) {
-      study_subtype.innerHTML = data;
-      a.innerHTML = study_subtype.options[study_subtype.selectedIndex].innerHTML;
-      b.innerHTML = "";
-      study_subtype.innerHTML = data;
-      makeSelectItems();
-    },
-  });
-  $(s).on('click',function () {
-    if(!$(s).hasClass('select-arrow-active')){
-      study_type_id = s.getAttribute('study_type_id');
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-      $.ajax({
-        url: "/disciplines-study-subtype",
-        type: "post",
-        data: {'study_type_id':study_type_id},
-        success: function (data) {
-          b.innerHTML = "";
-          study_subtype.innerHTML = data;
-          makeSelectItems();
-        },
-      });
-    }
-  });
-  function makeSelectItems() {
-    for (j = 0; j < study_subtype.length; j++) {
-      c = document.createElement("DIV");
-      c.innerHTML = study_subtype.options[j].innerHTML;
-      c.addEventListener("click", function(e) {
-        var y, i, k, s, h;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < s.length; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            for (k = 0; k < y.length; k++) {
-              y[k].removeAttribute("class");
-            }
-            this.setAttribute("class", "same-as-selected");
-            break;
-          }
-        }
-        h.click();
-      });
-      b.appendChild(c);
-    }
-  }
-}
-customSelectForStudySubtype();
 
 function createModal() {
+
+  $('.data-add__button').click(function (e) {
+    $("input[name='wnpDisciplineSemId']").val($(this).attr('data-wnpDisciplineSem'));
+    let name = $('#employer_select').find('option[value='+$(this).attr('id')+']').text();
+    $(".select-items div:contains('" + name + "')").remove();
+    $('#employer_select').find('option[value='+$(this).attr('id')+']').remove();
+    $('.select-selected')[0].textContent = $('#employer_select option:nth-child(1)').text();
+
+    $('#addEditEmpTypeModal').show();
+  });
+  $('.data-delete__button').click(function (e) {
+    $("input[name='wnpDisciplineSemIdExc']").val($(this).attr('data-wnpDisciplineSem'));
+    $('#deleteEditEmpTypeModal').show();
+  });
+
+  $('#btnCloseEditEmpType').click(function() {
+    $('#addEditEmpTypeModal').hide();
+  });
 
   $('#btnCreateStudyType').click(function() {
     $('#ajaxStudyTypeModal').show();
@@ -287,8 +233,8 @@ function createModal() {
     }else{
       $('#ajaxTestDesciplineModal').show();
     }
-
   });
+
 
   $('.modal__exit').click(function() {
     $('.modal').hide();
@@ -449,5 +395,9 @@ function copyTestDiscipline() {
     });
   });
 }
-copyTestDiscipline()
+copyTestDiscipline();
+
+function showDivision() {
+  
+}
 

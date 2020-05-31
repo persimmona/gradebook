@@ -20,6 +20,10 @@ class WnpDisciplineSem extends Model
     {
         return $this->belongsTo(WnpSemester::class);
     }
+    public function wnpDiscSemEmployers()
+    {
+        return $this->hasMany(WnpDiscSemEmployer::class);
+    }
 
     public function division()
     {
@@ -35,6 +39,21 @@ class WnpDisciplineSem extends Model
     {
         return $this->hasMany(TestDiscipline::class)->orderBy('attestation_id');
     }
+    public function getEmpTypeByEmployerId($employerId)
+    {
+        if(is_null($this->wnpDiscSemEmployers()->where('employer_id', $employerId)->first()))
+            return 0;
+        else
+            return $this->wnpDiscSemEmployers()->where('employer_id', $employerId)->first()->emp_type_id;
+    }
 
+    public function getEmpType1()
+    {
+        return $this->wnpDiscSemEmployers->where('emp_type_id', 1)->first();
+    }
+    public function getEmpType2()
+    {
+        return $this->wnpDiscSemEmployers()->where('emp_type_id', 2)->get();
+    }
 
 }

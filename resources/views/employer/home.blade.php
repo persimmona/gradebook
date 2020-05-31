@@ -15,14 +15,14 @@
                 <th>Кількість кредитів</th>
                 <th>Опції</th>
             </tr>
-            @foreach($wnpDiscSemEmps as $wnpDiscSemEmp)
+            @foreach($wnpDisciplineSems as $wnpDisciplineSem)
             <tr>
-                <td><a href="{{route('discipline.showJournal', ['wnpDiscSemEmployer'=>$wnpDiscSemEmp, 'slug'=>
-                    Str::slug($wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name}}</a></td>
-                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</td>
-                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->studyType->study_type_name}}</td>
-                <td>{{$wnpDiscSemEmp->wnpDisciplineSem->hour_total}}</td>
-                <td>{{round($wnpDiscSemEmp->wnpDisciplineSem->hour_total/30, 2)}}</td>
+                <td><a href="{{route('discipline.showJournal', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
+                    Str::slug( $wnpDisciplineSem->discipline->discipline_name)])}}">{{ $wnpDisciplineSem->discipline->discipline_name}}</a></td>
+                <td>{{ $wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</td>
+                <td>{{ $wnpDisciplineSem->studyType->study_type_name}}</td>
+                <td>{{ $wnpDisciplineSem->hour_total}}</td>
+                <td>{{round( $wnpDisciplineSem->hour_total/30, 2)}}</td>
                 <td>
                     <div class="data-options">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -31,8 +31,8 @@
                         </svg>
                         <ul class="data-options__list">
                             <li class="data-options__item">
-                                <a class="data-options__link" href="{{route('discipline.showJournal', ['wnpDiscSemEmployer'=>$wnpDiscSemEmp, 'slug'=>
-                    Str::slug($wnpDiscSemEmp->wnpDisciplineSem->discipline->discipline_name)])}}">
+                                <a class="data-options__link" href="{{route('discipline.showJournal', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
+                    Str::slug( $wnpDisciplineSem->discipline->discipline_name)])}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
@@ -57,8 +57,6 @@
         </table>
     </div>
 </div>
-
-<footer class="footer"></footer>
 
 <script src="{{ asset('js/app.js')}}" defer></script>
 @endsection

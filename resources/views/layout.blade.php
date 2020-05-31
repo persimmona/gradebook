@@ -21,4 +21,5 @@
 @include('nav')
 @yield('content')
 </body>
+<footer class="footer"></footer>
 </html>
