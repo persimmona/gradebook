@@ -30,7 +30,7 @@
             </div>
 
 
-            <div class="modal-control" id = 'study_subtype'>
+            <div class="modal-control" id ='study_subtype'>
                 <label class="modal-control__label" for="study_sub_type_id">Етапи роботи</label>
                 <div class="custom-select">
                     <select name="study_sub_type_id">
@@ -58,9 +58,9 @@
                 </div>
             </div>
             <input type="hidden" name="wnp_discipline_sem_id" value="{{$wnpDisciplineSem->id}}">
-            <input type="hidden" id="is_current_study_types" value="{{$currentStudyTypes->isEmpty()}}">
 
             <div class="error"></div>
+            <div class="success"></div>
             <div class="modal-control-group modal-control-group_centered">
                 <div class="modal-control">
                     <button class="modal__btn modal__btn_submit" type="submit" id="btnSaveTestDiscipline">Зберегти</button>

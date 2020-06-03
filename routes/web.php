@@ -46,6 +46,9 @@ Route::group(['middleware' => 'auth:employer'], function(){
     Route::delete('division-editemp-delete', 'DivisionController@destroyAddEditEmpTypeModal');
 
     Route::post('disciplines', 'DisciplineController@store')->name('discipline.store');
+    Route::get('disciplines/{testDiscipline}/edit', 'DisciplineController@edit');
+    Route::post('disciplines/{testDiscipline}', 'DisciplineController@update');
+    Route::delete('disciplines/{testDiscipline}', 'DisciplineController@destroy');
     Route::post('disciplines-copy', 'DisciplineController@storeCopy')->name('discipline.storeCopy');
     Route::post('disciplines-study-subtype', 'DisciplineController@showStudySubTypes')->name('discipline.showStudySubTypes');
 

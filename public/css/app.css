@@ -49,6 +49,11 @@ a:hover{
   color: red;
 
 }
+
+.success{
+  margin: 10px 0;
+  color: #6aa889;
+}
 .root {
   color: #2a2a2a;
   font-family: "Montserrat", sans-serif;
@@ -827,6 +832,22 @@ a:hover{
 
   writing-mode: vertical-lr;
 }
+.journal button{
+  color: #6aa889;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.journal button:focus{
+  outline: none;
+}
+
+.journal button:hover{
+  color: #3b5b4a;
+}
 
 .journal th {
   position: relative;
@@ -884,6 +905,8 @@ a:hover{
   left: 0;
 }
 
+
+
 .journal__col-title {
   position: absolute;
   top: 10px;
@@ -909,8 +932,12 @@ a:hover{
 }
 
 .journal__add svg {
-  transform: scale(1.25);
+  transform: scale(1.45);
 }
+.journal__add:hover path:first-child{
+  fill: #3b5b4a;
+}
+
 
 /*.journal tr:not(:first-child):hover {*/
   /*background: #edf0fa;*/
@@ -1065,6 +1092,15 @@ a:hover{
   border-color: #2a2a2a transparent transparent transparent;
 }
 
+.select-selected.none{
+  background-color: rgba(239, 239, 239, 0.3);
+  cursor: default;
+}
+.select-selected.none:after {
+  display: none;
+
+}
+
 .select-selected.select-arrow-active:after {
   top: calc(50% - 7px);
 
@@ -1080,6 +1116,8 @@ a:hover{
 }
 
 .select-items {
+  overflow-y: scroll;
+  max-height: 250px;
   position: absolute;
   z-index: 99;
   top: 100%;

@@ -36,14 +36,39 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
                 </td>
                 @foreach(\App\Models\TestDiscipline::getA1($testDisciplines) as $testDiscipline)
                 <th>
-                    <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
-                        {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span>
+                    @if($empType == 0)
+                        <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
+                            {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span>
+                    @elseif(isset($testDiscipline->studyType->edit_emp_type_id))
+                        @if($empType != 1)
+                            <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
+                                {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span>
+                        @else
+                            <button class = "journal__edit-button" id="{{$testDiscipline->id}}"><span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
+                                    {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span></button>
+                        @endif
+                    @else
+                        <button class = "journal__edit-button" id="{{$testDiscipline->id}}"><span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}
+                                {{is_null($testDiscipline->studySubtype)? '':$testDiscipline->studySubtype->study_subtype_short_name}}</span></button>
+                    @endif
                 </th>
                 @endforeach
                 <th class="journal__expression"><span>Атестація 1</span></th>
                 @foreach(\App\Models\TestDiscipline::getA2($testDisciplines) as $testDiscipline)
                     <th>
-                        <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}</span>
+                        @if($empType == 0)
+                            <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}</span>
+                        @elseif(isset($testDiscipline->studyType->edit_emp_type_id))
+                            @if($empType != 1)
+                                <span>{{$testDiscipline->studyType->study_type_short_name}} {{$testDiscipline->study_type_description}}</span>
+                            @else
+                                <button class = "journal__edit-button" id="{{$testDiscipline->id}}"><span>{{$testDiscipline->studyType->study_type_short_name}}
+                                        {{$testDiscipline->study_type_description}}</span></button>
+                            @endif
+                        @else
+                            <button class = "journal__edit-button" id="{{$testDiscipline->id}}"><span>{{$testDiscipline->studyType->study_type_short_name}}
+                                    {{$testDiscipline->study_type_description}}</span></button>
+                        @endif
                     </th>
                 @endforeach
                 <th class="journal__expression"><span>Атестація 2</span></th>
@@ -117,7 +142,7 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
 
 <script>
     function customSelectForStudySubtype(){
-        let x, s, study_type_id, study_subtype, a, j, c, b;
+        let x, s, study_type_id, study_subtype, a, b;
         s = document.getElementById("study_type").
         getElementsByClassName("select-selected")[0];//div select-selected
         x = document.getElementById("study_subtype");
@@ -139,7 +164,7 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
                 a.innerHTML = study_subtype.options[study_subtype.selectedIndex].innerHTML;
                 b.innerHTML = "";
                 study_subtype.innerHTML = data;
-                makeSelectItems();
+                makeSelectItems(study_subtype, b);
             },
         });
         $(s).on('click',function () {
@@ -157,35 +182,36 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
                     success: function (data) {
                         b.innerHTML = "";
                         study_subtype.innerHTML = data;
-                        makeSelectItems();
+                        makeSelectItems(study_subtype, b);
                     },
                 });
             }
         });
-        function makeSelectItems() {
-            for (j = 0; j < study_subtype.length; j++) {
-                c = document.createElement("DIV");
-                c.innerHTML = study_subtype.options[j].innerHTML;
-                c.addEventListener("click", function(e) {
-                    var y, i, k, s, h;
-                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                    h = this.parentNode.previousSibling;
-                    for (i = 0; i < s.length; i++) {
-                        if (s.options[i].innerHTML == this.innerHTML) {
-                            s.selectedIndex = i;
-                            h.innerHTML = this.innerHTML;
-                            y = this.parentNode.getElementsByClassName("same-as-selected");
-                            for (k = 0; k < y.length; k++) {
-                                y[k].removeAttribute("class");
-                            }
-                            this.setAttribute("class", "same-as-selected");
-                            break;
+
+    }
+    function makeSelectItems(study_subtype,b) {
+        for (let j = 0; j < study_subtype.length; j++) {
+            let c = document.createElement("DIV");
+            c.innerHTML = study_subtype.options[j].innerHTML;
+            c.addEventListener("click", function() {
+                let y, i, k, s, h;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < s.length; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        for (k = 0; k < y.length; k++) {
+                            y[k].removeAttribute("class");
                         }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
                     }
-                    h.click();
-                });
-                b.appendChild(c);
-            }
+                }
+                h.click();
+            });
+            b.appendChild(c);
         }
     }
     $(document).ready(function() {

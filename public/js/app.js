@@ -201,8 +201,9 @@ function createModal() {
   $('.data-add__button').click(function (e) {
     $("input[name='wnpDisciplineSemId']").val($(this).attr('data-wnpDisciplineSem'));
     let name = $('#employer_select').find('option[value='+$(this).attr('id')+']').text();
-    $(".select-items div:contains('" + name + "')").remove();
     $('#employer_select').find('option[value='+$(this).attr('id')+']').remove();
+    if(name)
+      $(".select-items div:contains('" + name + "')").remove();
     $('.select-selected')[0].textContent = $('#employer_select option:nth-child(1)').text();
 
     $('#addEditEmpTypeModal').show();
@@ -227,13 +228,15 @@ function createModal() {
   });
 
   $('.journal__add').click(function() {
-    if($('#is_current_study_types').val()){
-
-      $('#exceptionTestDisciplineModal').show();
-    }else{
-      $('#ajaxTestDesciplineModal').show();
-    }
+    $("#study_type .select-selected").eq(0).removeClass("none");
+    $("#study_type_description").prop("disabled", false);
+    $("#study_type .custom-select").eq(0).css("pointer-events", "all");
+    $("#btnUpdateTestDiscipline").replaceWith('<button class="modal__btn modal__btn_submit" type="submit" id="btnSaveTestDiscipline">Зберегти</button>');
+    $("#btnDeleteTestDiscipline").replaceWith('<button class="modal__btn" type="button" id="btnCopyTestDiscipline">Скопіювати</button>');
+    $('#ajaxTestDesciplineModal').show();
   });
+
+
 
 
   $('.modal__exit').click(function() {
@@ -259,62 +262,6 @@ function createModal() {
   }
 }
 createModal();
-//
-// function storeStudyType() {
-//   $('#studyTypeForm').submit(function (e){
-//   e.preventDefault();
-//   $('.error').empty();
-//   $.ajaxSetup({
-//     headers: {
-//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     }
-//   });
-//   $.ajax({
-//     url: "/study-types",
-//     type: "post",
-//     data: $('#studyTypeForm').serialize(),
-//     success: function (data) {
-//       if ($.isEmptyObject(data.error)) {
-//         $('#ajaxStudyTypeModal').hide();
-//         $('#studyTypeForm').trigger("reset");
-//         location.reload();
-//       } else {
-//         $('.error').append('<p>' + data.error + '</p>');
-//       }
-//     },
-//   });
-//   });
-// }
-//
-// storeStudyType();
-//
-//
-//
-// function storeAndCreateStudyType() {
-//   $('#btnAddStudyType').click(function(e) {
-//     e.preventDefault();
-//     $('.error').empty();
-//     $.ajaxSetup({
-//       headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//       }
-//     });
-//     $.ajax({
-//       url: "/study-types",
-//       type: "post",
-//       data: $('#studyTypeForm').serialize(),
-//       success: function (data) {
-//         if ($.isEmptyObject(data.error)) {
-//           $('#studyTypeForm').trigger("reset");
-//           location.reload();
-//         } else {
-//           $('.error').append('<p>' + data.error + '</p>');
-//         }
-//       },
-//     });
-//   });
-// }
-// storeAndCreateStudyType();
 
 function storeTestDiscipline(){
   $('#testDisciplineForm').submit(function (e){
@@ -397,7 +344,97 @@ function copyTestDiscipline() {
 }
 copyTestDiscipline();
 
-function showDivision() {
-  
+function editTestDiscipline() {
+  $(document).on('click','.journal__edit-button',function(e) {
+    e.preventDefault();
+    let testDiscId = $(this).attr("id");
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: "/disciplines/"+testDiscId+"/edit",
+      type: "get",
+      success: function (data) {
+        $("#study_type_description").val(data.study_type_description);
+        $("#study_type_description").prop("disabled", true);
+
+        $("#max_score").val(data.max_score);
+
+        $("#study_type .select-selected")[0].textContent =data.study_type_name;
+        $("#study_type .select-selected").eq(0).attr('study_type_id', data.study_type_id );
+        $("#study_type .custom-select").eq(0).css("pointer-events", "none");
+        $("#study_type .select-selected").eq(0).addClass("none");
+
+        $("#study_subtype .select-selected")[0].textContent = data.study_sub_type_name;
+        $("#study_subtype select").html(data.study_sub_types);
+        let b = $("#study_subtype .select-items")[0];
+        b.innerHTML = "";
+        let s = document.getElementsByName('study_sub_type_id')[0];
+        makeSelectItems(s,b);
+
+        $(".radio-field input[value='"+data.attestation_id+"']").prop("checked", true);
+        $("#btnSaveTestDiscipline").replaceWith('<button class="modal__btn modal__btn_submit" type="button" ' +
+            'id="btnUpdateTestDiscipline" data-test_disc_id = '+testDiscId+'>Оновити</button>');
+        $("#btnCopyTestDiscipline").replaceWith('<button class="modal__btn" type="button" ' +
+            'id="btnDeleteTestDiscipline" data-test_disc_id ='+testDiscId+'>Видалити</button>');
+        $('#ajaxTestDesciplineModal').show();
+      },
+    });
+  });
+
 }
+editTestDiscipline();
+
+function updateTestDiscipline() {
+  $(document).on('click','#btnUpdateTestDiscipline', function(e){
+    e.preventDefault();
+    let testDiscId = $(this).attr("data-test_disc_id");
+    $('.error').empty();
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: "/disciplines/"+testDiscId,
+      type: "post",
+      data: $('#testDisciplineForm').serialize(),
+      success: function (data) {
+        if ($.isEmptyObject(data.error)) {
+          $('#ajaxTestDesciplineModal').hide();
+          // $('#testDisciplineForm').trigger("reset");
+          location.reload();
+        } else {
+          $('.error').append('<p>' + data.error + '</p>');
+        }
+      },
+    });
+  });
+}
+
+updateTestDiscipline();
+
+function deleteTestDiscipline() {
+  $(document).on('click','#btnDeleteTestDiscipline', function(e){
+    let testDiscId = $(this).attr("data-test_disc_id");
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $.ajax({
+      url: "/disciplines/"+testDiscId,
+      type: "delete",
+      success: function (data) {
+          $('#ajaxTestDesciplineModal').hide();
+          // $('#testDisciplineForm').trigger("reset");
+          location.reload();
+      },
+    });
+  });
+}
+
+deleteTestDiscipline();
 
