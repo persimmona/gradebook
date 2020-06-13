@@ -30,6 +30,11 @@ class StudyCard extends Model
         return $this->where('id', $id);
     }
 
+    public static function getStudyCardByGroupAndStudent($groupId, $studentId)
+    {
+        return StudyCard::where('study_group_id', $groupId)->where('student_id', $studentId)->first();
+    }
+
 //    public static function getStudyCardsOrderByStudLastName($studyCards)
 //    {
 //        return dd($studyCards->with(['student' => function ($q) {

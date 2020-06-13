@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CurrentData;
 use App\Models\Discipline;
+use App\Models\StudyCard;
 use App\Models\StudySubtype;
 use App\Models\TestDiscipline;
 use App\Models\WnpDisciplineSem;
@@ -27,7 +28,9 @@ class DisciplineController extends Controller
     public function showMarks(WnpDisciplineSem $wnpDisciplineSem)
     {
         $testDisciplines = $wnpDisciplineSem->testDisciplines;
-        return view('student.subject', compact('testDisciplines', 'wnpDisciplineSem'));
+        $studyCard = StudyCard::getStudyCardByGroupAndStudent($wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->id,
+            auth()->user()->id);
+        return view('student.subject', compact('testDisciplines', 'wnpDisciplineSem', 'studyCard'));
     }
 
     public function showJournal(WnpDisciplineSem $wnpDisciplineSem)

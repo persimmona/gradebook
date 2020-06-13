@@ -22,12 +22,12 @@
                 <tr>
                     <td><a href="{{route('discipline.showMarks', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>
                     Str::slug($wnpDisciplineSem->discipline->discipline_name)])}}">{{$wnpDisciplineSem->discipline->discipline_name}}</a></td>
-                    <td>{{\App\Models\TestDiscipline::sumTestResultsA1($wnpDisciplineSem->testDisciplines)}} /
+                    <td>{{\App\Models\TestDiscipline::sumTestResultsA1ByStudyCardId($wnpDisciplineSem->testDisciplines, $studyCard->id)}} /
                         {{\App\Models\TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score')}}</td>
-                    <td>{{\App\Models\TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines)}} /
+                    <td>{{\App\Models\TestDiscipline::sumTestResultsA2ByStudyCardId($wnpDisciplineSem->testDisciplines, $studyCard->id)}} /
                         {{\App\Models\TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score')}}</td>
                     <td>{{$wnpDisciplineSem->studyType->study_type_name}}</td>
-                    <td>{{\App\Models\TestDiscipline::sumTestResults($wnpDisciplineSem->testDisciplines)}} / 100</td>
+                    <td>{{\App\Models\TestDiscipline::sumTestResultsByStudyCardId($wnpDisciplineSem->testDisciplines, $studyCard->id)}} / 100</td>
                 </tr>
                 @endforeach
             </table>

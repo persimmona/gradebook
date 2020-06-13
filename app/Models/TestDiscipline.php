@@ -34,28 +34,28 @@ class TestDiscipline extends Model
         return $this->belongsTo(StudySubtype::class, 'study_sub_type_id');
     }
 
-    public static function sumTestResultsA1($testDisciplines) //сумма оценок для аттестаций
-    {
-        return $testDisciplines->where('attestation_id', 1)->pluck('testResults')->flatten()->sum('value');
-    }
+//    public static function sumTestResultsA1($testDisciplines) //сумма оценок для аттестаций
+//    {
+//        return $testDisciplines->where('attestation_id', 1)->where()->pluck('testResults')->flatten()->sum('value');
+//    }
 
     public static function sumTestResultsA1ByStudyCardId($testDisciplines, $studyCardId) //сумма оценок для аттестаций
     {
         return $testDisciplines->where('attestation_id', 1)->pluck('testResults')->flatten()->where('study_card_id',$studyCardId)->sum('value');
     }
-    public static function sumTestResultsA2($testDisciplines) //сумма оценок для аттестаций
-    {
-        return $testDisciplines->where('attestation_id', 2)->pluck('testResults')->flatten()->sum('value');
-    }
+//    public static function sumTestResultsA2($testDisciplines) //сумма оценок для аттестаций
+//    {
+//        return $testDisciplines->where('attestation_id', 2)->pluck('testResults')->flatten()->sum('value');
+//    }
     public static function sumTestResultsA2ByStudyCardId($testDisciplines, $studyCardId) //сумма оценок для аттестаций
     {
         return $testDisciplines->where('attestation_id', 2)->pluck('testResults')->flatten()->where('study_card_id',$studyCardId)->sum('value');
     }
 
-    public static function sumTestResults($testDisciplines) //сумма оценок для итогов
-    {
-        return $testDisciplines->pluck('testResults')->flatten()->sum('value');
-    }
+//    public  function sumTestResults($testDisciplines) //сумма оценок для итогов
+//    {
+//        return $testDisciplines->pluck('testResults')->flatten()->sum('value');
+//    }
     public static function sumTestResultsByStudyCardId($testDisciplines, $studyCardId) //сумма оценок для итогов
     {
         return $testDisciplines->pluck('testResults')->flatten()->where('study_card_id',$studyCardId)->sum('value');

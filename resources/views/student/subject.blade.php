@@ -29,10 +29,10 @@
             @endforeach
             <tr class="data__total">
                 <td>Підсумки</td>
-                <td>{{\App\Models\TestDiscipline::sumTestResults($testDisciplines)}} / 100</td>
-                <td>{{\App\Models\TestDiscipline::sumTestResultsA1($testDisciplines)}} /
+                <td>{{\App\Models\TestDiscipline::sumTestResultsByStudyCardId($testDisciplines, $studyCard->id)}} / 100</td>
+                <td>{{\App\Models\TestDiscipline::sumTestResultsA1ByStudyCardId($testDisciplines, $studyCard->id)}} /
                     {{\App\Models\TestDiscipline::getA1($testDisciplines)->sum('max_score')}}</td>
-                <td>{{\App\Models\TestDiscipline::sumTestResultsA2($testDisciplines)}}  /
+                <td>{{\App\Models\TestDiscipline::sumTestResultsA2ByStudyCardId($testDisciplines, $studyCard->id)}}  /
                     {{\App\Models\TestDiscipline::getA2($testDisciplines)->sum('max_score')}}</td>
             </tr>
         </table>
