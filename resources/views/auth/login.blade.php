@@ -3,6 +3,7 @@
 @section('title','Авторизуватися — Журнал Оцінок')
 
 @section('content')
+    <!-- какой то фикс -->
     <form class="login-form" role="form" method="post" action="{{ url('login') }}">
         {!! csrf_field() !!}
         <div class="login-form__body">

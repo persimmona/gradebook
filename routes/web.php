@@ -45,6 +45,10 @@ Route::group(['middleware' => 'auth:employer'], function(){
     Route::post('division-editemp', 'DivisionController@storeAddEditEmpTypeModal');
     Route::delete('division-editemp-delete', 'DivisionController@destroyAddEditEmpTypeModal');
 
+    Route::get('division/group-list-{divisionId}', 'GroupController@index')->name('group-list.index');
+    Route::post('division/group-list/students', 'GroupController@getAjaxStudentList');
+    Route::post('division/group-list/toexel', 'GroupController@toExel');
+
     Route::post('disciplines', 'DisciplineController@store')->name('discipline.store');
     Route::get('disciplines/{testDiscipline}/edit', 'DisciplineController@edit');
     Route::post('disciplines/{testDiscipline}', 'DisciplineController@update');

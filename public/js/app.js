@@ -32,17 +32,19 @@ function showDisciplines() {
 
   $(".data-tab__item").on("click", function (e) {
     e.preventDefault();
-    let svg = document.querySelector('.forward-icon');
 
     let termId = $(this).attr('data-id');
+    let studyCard = $(this).attr('data-studyCard');
+
+    console.log($(this));
 
     let table = document.querySelector('.data'+termId);
 
     if(table.textContent !==''){
-      svg.style.transform = 'rotate(0deg)';
+      $(this).find('svg').css('transform', 'rotate(0deg)');
       table.innerHTML= '';
     }else{
-      svg.style.transform = 'rotate(90deg)';
+      $(this).find('svg').css('transform', 'rotate(90deg)');
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -51,7 +53,10 @@ function showDisciplines() {
       $.ajax({
         url: '/ajaxRequest',
         type: 'post',
-        data: { "termId": termId },
+        data: {
+            "termId": termId,
+            "studyCard": studyCard
+        },
         success: function (data) {
           table.innerHTML = data;
         },
@@ -200,11 +205,12 @@ function createModal() {
 
   $('.data-add__button').click(function (e) {
     $("input[name='wnpDisciplineSemId']").val($(this).attr('data-wnpDisciplineSem'));
-    let name = $('#employer_select').find('option[value='+$(this).attr('id')+']').text();
-    $('#employer_select').find('option[value='+$(this).attr('id')+']').remove();
-    if(name)
-      $(".select-items div:contains('" + name + "')").remove();
-    $('.select-selected')[0].textContent = $('#employer_select option:nth-child(1)').text();
+    $("input[name='employerId']").val($(this).attr('data-employerId'));
+    // let name = $('#employer_select').find('option[value='+$(this).attr('id')+']').text();
+    // $('#employer_select').find('option[value='+$(this).attr('id')+']').remove();
+    // if(name)
+    //   $(".select-items div:contains('" + name + "')").remove();
+    // $('.select-selected')[0].textContent = $('#employer_select option:nth-child(1)').text();
 
     $('#addEditEmpTypeModal').show();
   });
@@ -438,3 +444,78 @@ function deleteTestDiscipline() {
 
 deleteTestDiscipline();
 
+
+function groupAccordion() {
+  var acc = document.getElementsByClassName("group-accordion__btn");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      $(this).children().eq(2).css('display', 'block');
+      $(this).children().eq(1).css('display', 'none');
+      let panel = $(this).parent().next();
+      console.log(panel.css('max-height') != 0);
+      if (panel.css('max-height') != '0px') {
+        panel.css('max-height', 0);
+        $(this).children().eq(1).css('display', 'block');
+        $(this).children().eq(2).css('display', 'none');
+      } else {
+        if ($(this).attr("data-students-count")!=0) {
+
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            url: "group-list/students",
+            type: "post",
+            data: {
+              groupId: $(this).attr("data-group-id")
+            },
+            success: function (data) {
+              let info = `<table class="data data_zebra"><tr>
+                    <th>Прізвище</th>
+                    <th>Ім'я</th>
+                    <th>По-батькові</th>
+                </tr>`;
+              data.forEach(studnet => {
+                info += `<tr>
+                    <td>`+studnet['last_name']+`</td>
+                    <td>`+studnet['first_name']+`</td>
+                    <td>`+studnet['middle_name']+`</td>
+                </tr>`;
+              });
+              info +=`</table>`;
+              panel.html(info);
+              panel.css('max-height', panel.prop('scrollHeight'));
+            },
+          });
+        } else {
+          panel.html('<p>Немає записів</p>')
+          panel.css('max-height', panel.prop('scrollHeight'));
+        }
+      }
+    });
+  }
+}
+
+groupAccordion();
+
+
+function btnExportHandler() {
+  $('#groupCheckFrom').submit(function (event) {
+    let groupToExport = $('.check-btn__input:checked');
+    if(groupToExport.length==0) {
+      $('#choseGroupModal').show();
+      event.preventDefault();
+    }
+  });
+
+  $('body').on('click', '#choseGroupModal .modal__btn_submit', function () {
+    $('#choseGroupModal').hide();
+  });
+
+}
+btnExportHandler();

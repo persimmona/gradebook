@@ -50,6 +50,8 @@ class StudyGroup extends Model
         return $this->belongsTo(EducationForm::class);
     }
 
-
+    public function getStudentsCount() {
+        return $this->studyCards()->count();
+    }
 
 }

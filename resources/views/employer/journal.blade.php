@@ -12,11 +12,20 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
 <h1 class="data-title">{{$currentData->sessionType->semester_type_name}} семестр {{$currentData->current_study_year_id}} навчального року</h1>
 <p class="data-subtitle">{{ $wnpDisciplineSem->discipline->discipline_name}}</p>
 <p class="data-subtitle">{{ $wnpDisciplineSem->wnpSemester->wnpTitle->studyGroup->study_group_name}}</p>
+
+<button type="button" class="btn" onclick="printJS({
+		printable: 'grade-table',
+		type: 'html',
+		css: '{{ asset('css/app.css') }}',
+        style: '.journal th { padding: 2px;} .journal th span { writing-mode: vertical-rl;}'
+        })">
+    Роздрукувати таблицю
+</button>
 {{--@if(auth()->user()->postition_id != 565)--}}
 {{--<button id="btnCreateStudyType" class="btn">Додати форму контролю</button>--}}
 {{--@endif--}}
 <div class="root__overflow-container">
-    <div class="root__data-container">
+    <div class="root__data-container" >
 
         <p class="data-text">
             @foreach($testDisciplines->unique('study_type_id') as $testDiscipline)
@@ -25,14 +34,14 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
                 @endif
             @endforeach
         </p>
-        <table class="journal">
+        <table class="journal" id="grade-table">
           <tr>
                 <td class="journal__corner">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                         <line x1="0" y1="0" x2="100%" y2="100%" stroke="#e8e8e8" stroke-width="2"/>
                     </svg>
                     <span class="journal__col-title">Контроль</span>
-                    <span class="journal__row-title">Прізвище, ім'я студента</span>
+                    <span class="journal__row-title">Прізвище, <br> ім'я студента</span>
                 </td>
                 @foreach(\App\Models\TestDiscipline::getA1($testDisciplines) as $testDiscipline)
                 <th>
@@ -125,6 +134,9 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
             </table>
     </div>
 </div>
+
+
+
 <div class="home-link-container home-link-container_journal">
     <a class="home-link" href="{{ url()->previous() }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
@@ -134,6 +146,7 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
         Назад
     </a>
 </div>
+
 
 {{--@include('employer.study_type.create')--}}
 @include('employer.test_discipline.create')

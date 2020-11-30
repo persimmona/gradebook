@@ -24,10 +24,16 @@ class TermController extends Controller
     {
         $student = Auth::guard('student')->user();
         $terms = $student->getSemesters($studyCard->id);
-        $currentTerm = $terms[0];
-        unset($terms[0]);
+        $currentTerm = $student->getCurrentSemester($studyCard->id);
+        if(empty($currentTerm)) {
+            return view('student.home', compact('studyCard', 'terms'),
+                ['currentTermNoData' => "Немає даних для поточного семестру"]);
+        }
+        if(empty($terms)) {
+            return view('student.home', compact('studyCard', 'terms'),
+                ['termNoData' => "Немає даних для попередніх семестів"]);
+        }
         return view('student.home', compact('terms', 'currentTerm', 'studyCard'));
-
     }
 
     public function showEmployerTerms()

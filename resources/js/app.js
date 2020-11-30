@@ -25,9 +25,8 @@ function showDisciplines() {
         let svg = document.querySelector('.forward-icon');
 
         let termId = $(this).attr('data-id');
-
+        let studyCard = $(this).attr('data-studyCard');
         let table = document.querySelector('.data'+termId);
-
         if(table.textContent !==''){
             svg.style.transform = 'rotate(0deg)';
             table.innerHTML= '';
@@ -41,7 +40,10 @@ function showDisciplines() {
             $.ajax({
                 url: '/ajaxRequest',
                 type: 'post',
-                data: { "termId": termId },
+                data: {
+                    "termId": termId,
+                    "studyCard": studyCard
+                },
                 success: function (data) {
                     table.innerHTML = data;
                 },

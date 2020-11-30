@@ -26,7 +26,7 @@ class WnpDiscSemEmployer extends Model
         return $this->belongsTo(EmpType::class);
     }
 
-    public static function getCurrTermEmpDisc($empId, $currentData)
+    public static function getCurrTermEmpDisc($empId, $currentData)//cвязать еще с кафедрой
     {
         $currentSessionType = $currentData->current_session_type_id;
         $currentStudyYear = $currentData->current_study_year_id;

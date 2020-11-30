@@ -13,6 +13,7 @@ class AjaxController extends Controller
     public function showStudDisciplines(Request $request)
     {
         $term = WnpSemester::getSemesterById($request->termId);
+        $studyCardId = WnpSemester::getSemesterById($request->studyCard);
         $data = "<tr>
                     <th>Поточні предмети</th>
                     <th>Форма контролю</th>
@@ -23,7 +24,7 @@ class AjaxController extends Controller
 //        $a2 = TestDiscipline::sumTestResultsA2($wnpDisciplineSem->testDisciplines);
 //        $a1Max = TestDiscipline::getA1($wnpDisciplineSem->testDisciplines)->sum('max_score');
 //        $a2Max = TestDiscipline::getA2($wnpDisciplineSem->testDisciplines)->sum('max_score');
-        $sum = TestDiscipline::sumTestResults($wnpDisciplineSem->testDisciplines);
+        $sum = TestDiscipline::sumTestResultsByStudyCardId($wnpDisciplineSem->testDisciplines, $studyCardId);
         $data .= "<tr>
                     <td>{$wnpDisciplineSem->discipline->discipline_name}</td>
                     <td>{$wnpDisciplineSem->studyType->study_type_name}</td>

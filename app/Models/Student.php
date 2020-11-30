@@ -39,15 +39,24 @@ class Student extends Authenticatable
     {
         $wnpTitles = $this->studyCards()->find($studyCardId)->studyGroup->wnpTitles()->orderBy('study_year_id', 'DESC')->get();//оформить отдельную функцию?
         $wnpSemesters = new Collection();
-        $currentData = $wnpTitles[0]->studyYear->currentData;
-        foreach ($wnpTitles as $wnpTitle){
-           if($wnpTitle->study_year_id===$currentData->current_study_year_id)
-                $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->where('session_type_id', '<=',  $currentData->current_session_type_id)
-                    ->orderBy('semester_id', 'DESC')->get());
-            else
+        $currentData = CurrentData::first();
+        foreach ($wnpTitles as $wnpTitle) {
+            if ($wnpTitle->study_year_id === $currentData->current_study_year_id) {
+                $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->where('session_type_id', '<',  $currentData->current_session_type_id)->get());
+            } else {
                 $wnpSemesters = $wnpSemesters->merge($wnpTitle->wnpSemesters()->orderBy('semester_id', 'DESC')->get());
+            }
         }
         return $wnpSemesters;
+    }
+
+    public function getCurrentSemester($studyCardId)
+    {
+        $wnpTitles = $this->studyCards()->find($studyCardId)->studyGroup->wnpTitles()->orderBy('study_year_id', 'DESC')->get();
+        $currentData = CurrentData::first();
+        return $wnpTitles->first()->study_year_id == $currentData->current_study_year_id ?
+            $wnpTitles->first()->wnpSemesters()->where('session_type_id', '=',
+            $currentData->current_session_type_id)->first() : null;
     }
 
     public function getRoleAttribute()

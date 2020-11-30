@@ -27,8 +27,7 @@ class CurrentData extends Model
         $currentDate = date('Y-m-d');
         $first = date_create_from_format('Y-m-d', $startDate);
         $second = date_create_from_format('Y-m-d', $currentDate);
-
-        return floor($first->diff($second)->days/7);
+        return round($first->diff($second)->days/7);
     }
 
 }

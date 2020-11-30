@@ -70,7 +70,9 @@ class TestDiscipline extends Model
 
     public static function getA2($testDisciplines) //получить все оценки для 2 аттестации
     {
-        return $testDisciplines->where('attestation_id', 2);
+        return $testDisciplines->where('attestation_id', 2)->sortBy('study_type_description')->sortBy(function($query){
+            return $query->studyType->study_type_name;
+        });
     }
 
     public static function getA3($testDisciplines) //получить все оценки для 2 аттестации

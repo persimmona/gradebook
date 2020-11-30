@@ -49,7 +49,7 @@ class WnpDisciplineSem extends Model
 
     public function getEmpType1()
     {
-        return $this->wnpDiscSemEmployers->where('emp_type_id', 1)->first();
+        return $this->wnpDiscSemEmployers()->where('emp_type_id', 1)->first();
     }
     public function getEmpType2()
     {

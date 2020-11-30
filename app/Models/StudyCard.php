@@ -49,4 +49,5 @@ class StudyCard extends Model
 
 
 
+
 }
