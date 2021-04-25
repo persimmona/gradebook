@@ -24,16 +24,17 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
 {{--@if(auth()->user()->postition_id != 565)--}}
 {{--<button id="btnCreateStudyType" class="btn">Додати форму контролю</button>--}}
 {{--@endif--}}
+<p class="data-text">
+  @foreach($testDisciplines->unique('study_type_id') as $testDiscipline)
+    @if(isset($testDiscipline->studyType))
+      {{$testDiscipline->studyType->study_type_name}} &#8211; {{$testDiscipline->max_score}}&emsp;
+    @endif
+  @endforeach
+</p>
 <div class="root__overflow-container">
     <div class="root__data-container" >
 
-        <p class="data-text">
-            @foreach($testDisciplines->unique('study_type_id') as $testDiscipline)
-                @if(isset($testDiscipline->studyType))
-                {{$testDiscipline->studyType->study_type_name}} &#8211; {{$testDiscipline->max_score}}&emsp;
-                @endif
-            @endforeach
-        </p>
+
         <table class="journal" id="grade-table">
           <tr>
                 <td class="journal__corner">
@@ -149,9 +150,9 @@ $empType = $wnpDisciplineSem->getEmpTypeByEmployerId(auth()->user()->id);
 
 
 {{--@include('employer.study_type.create')--}}
-@include('employer.test_discipline.create')
-@include('employer.test_discipline.copy')
-@include('employer.test_discipline.exception')
+@include('employer.modals.create')
+@include('employer.modals.copy')
+@include('employer.modals.exception')
 
 <script>
     function customSelectForStudySubtype(){

@@ -79,13 +79,18 @@
             <div class="modal__body">
                 <div class="modal-control" id = 'employer'>
                     <label class="modal-control__label" for="employer_id">Оберіть викладача</label>
-                    <div class="custom-select">
-                        <select name="employer_id" id='employer_select'>
-                            @foreach($employers as $employer)
-                                <option value="{{$employer->id}}">{{$employer->last_name}} {{$employer->short_name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <select name="employer_id" id='employer_select'>
+                        @foreach($divisions as $division)
+                            @if($division->employers->count()>0)
+                                <optgroup label="<?= $division->parent_division_id == null ? $division->division_name : 'Кафедра '.mb_strtolower($division->division_name) ?>">
+                                    @foreach($division->employers as $employer)
+                                        <option value="{{$employer->id}}">{{$employer->last_name}} {{$employer->short_name}}</option>
+                                    @endforeach
+                                </optgroup>
+                            @endif
+                        @endforeach
+
+                    </select>
                 </div>
                 <input type="hidden" name="wnpDisciplineSemId" value="">
                 <input type="hidden" name="employerId" value="">

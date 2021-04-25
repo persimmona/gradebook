@@ -5,7 +5,9 @@
                     {{\Illuminate\Support\Facades\Auth::user()->first_name}} {{\Illuminate\Support\Facades\Auth::user()->middle_name}}</a></p>
             @if(!empty(auth()->user()->position))
                 @if(auth()->user()->position->is_zavkaf)
-                    <a class="header__item header__item_link" href="{{route('division.index')}}">Кафедра</a>
+                    <a class="header__item header__item_link" href="{{route('division.show')}}">Кафедра</a>
+                @elseif(auth()->user()->isDean())
+                    <a class="header__item header__item_link" href="{{route('division.index')}}">Деканат</a>
                 @endif
             @endif
         </div>
@@ -32,7 +34,9 @@
     <div class="mobile-menu">
         @if(!empty(auth()->user()->position))
             @if(auth()->user()->position->is_zavkaf)
-                <a class="mobile-menu__item" href="{{route('division.index')}}">Кафедра</a>
+                <a class="mobile-menu__item" href="{{route('division.show')}}">Кафедра</a>
+            @elseif(auth()->user()->isDean())
+                <a class="mobile-menu__item" href="{{route('division.index')}}">Деканат</a>
             @endif
         @endif
         <a class="mobile-menu__item" href="{{route('logout')}}">Вийти</a>

@@ -63,15 +63,15 @@ class TestDiscipline extends Model
 
     public static function getA1($testDisciplines) //получить все оценки для 1 аттестации
     {
-        return $testDisciplines->where('attestation_id', 1)->sortBy('study_type_description')->sortBy(function($query){
-            return $query->studyType->study_type_name;
+        return $testDisciplines->where('attestation_id', 1)->sortBy(function($query){
+            return $query->studyType->study_type_name.'#'.$query->study_type_description;
         });
     }
 
     public static function getA2($testDisciplines) //получить все оценки для 2 аттестации
     {
-        return $testDisciplines->where('attestation_id', 2)->sortBy('study_type_description')->sortBy(function($query){
-            return $query->studyType->study_type_name;
+        return $testDisciplines->where('attestation_id', 2)->sortBy(function($query){
+            return $query->studyType->study_type_name.'#'.$query->study_type_description;
         });
     }
 

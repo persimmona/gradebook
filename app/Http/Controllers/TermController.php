@@ -39,10 +39,11 @@ class TermController extends Controller
     public function showEmployerTerms()
     {
         $employer = Auth::guard('employer')->user();
-
+        if($employer->position->is_dekanat && !$employer->isDean()){
+            return redirect()->route('division.index');
+        }
         $currentData = CurrentData::first();
         $wnpDiscSemEmps = WnpDiscSemEmployer::getCurrTermEmpDisc($employer->id, $currentData);
-//        dd($wnpDiscSemEmps->map->wnpDisciplineSem->flatten());
         $wnpDisciplineSems = $wnpDiscSemEmps->map->wnpDisciplineSem->flatten();
         return view('employer.home', compact('currentData', 'wnpDisciplineSems'));
     }

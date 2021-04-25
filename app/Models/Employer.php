@@ -43,4 +43,8 @@ class Employer extends Authenticatable
         return substr($this->first_name, 0,2). ".".substr($this->middle_name, 0,2).".";
     }
 
+    public function isDean() {
+        return $this->position->position_name == "Декан";
+    }
+
 }

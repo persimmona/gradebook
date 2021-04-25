@@ -234,6 +234,7 @@ function createModal() {
   });
 
   $('.journal__add').click(function() {
+    $('#testDisciplineForm .modal-title').text('Додати контроль');
     $("#study_type .select-selected").eq(0).removeClass("none");
     $("#study_type_description").prop("disabled", false);
     $("#study_type .custom-select").eq(0).css("pointer-events", "all");
@@ -250,7 +251,7 @@ function createModal() {
     $('.modal-form').trigger("reset");
     $('.error').empty();
   });
-  
+
   $('.modal__btn_close').click(function() {
     $('.modal_small').hide();
   });
@@ -385,6 +386,7 @@ function editTestDiscipline() {
             'id="btnUpdateTestDiscipline" data-test_disc_id = '+testDiscId+'>Оновити</button>');
         $("#btnCopyTestDiscipline").replaceWith('<button class="modal__btn" type="button" ' +
             'id="btnDeleteTestDiscipline" data-test_disc_id ='+testDiscId+'>Видалити</button>');
+        $('#testDisciplineForm .modal-title').text('Редагувати контроль');
         $('#ajaxTestDesciplineModal').show();
       },
     });
@@ -519,3 +521,7 @@ function btnExportHandler() {
 
 }
 btnExportHandler();
+
+$("#employer_select").select2({
+    language: "uk"
+});

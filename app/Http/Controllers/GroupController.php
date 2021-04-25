@@ -12,7 +12,7 @@ class GroupController extends Controller
     public function index($divisionId)
     {
         $division = Division::find($divisionId);
-        $groups = $division->studyGroup()->orderBy('study_group_name')->get();
+        $groups = $division->studyGroups()->orderBy('study_group_name')->get();
         foreach ($groups as $group) {
             $groupInfos[] = [
                 'id'=>$group->id,

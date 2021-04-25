@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrentData;
+use App\Models\Division;
 use App\Models\Employer;
 use App\Models\WnpDiscSemEmployer;
 use Illuminate\Http\Request;
@@ -10,18 +11,35 @@ use Illuminate\Support\Facades\Auth;
 
 class DivisionController extends Controller
 {
-    public function index() // полчить для кафедры предметы
+    /**
+     * Show all divisions for dekanat role
+     * @param
+     * @variables user, faculty
+     *
+     */
+    public function index()
+    {
+        $faculty = Auth::guard('employer')->user()->division;
+        $divisions = Division::getDivisionsByFaculty($faculty->id);
+        $facultyName = $faculty->division_name;
+//        dd($divisions);
+        return view('employer.dekanat.index',compact('facultyName', 'divisions'));
+
+    }
+    public function show() //get subjects of division
     {
         $wnpDiscSemEmps = collect();
         $currentData = CurrentData::first();
         $divisionId = Auth::guard('employer')->user()->division_id;
-        $employers = Employer::where('division_id', $divisionId)->get();
-        foreach ($employers as $employer){
-            $wnpDiscSemEmps->push(WnpDiscSemEmployer::getCurrTermEmpDisc($employer->id, $currentData));
+        $empDivisions = Employer::where('division_id', $divisionId)->get();
+        foreach ($empDivisions as $empDivision){
+            $wnpDiscSemEmps->push(WnpDiscSemEmployer::getCurrTermEmpDisc($empDivision->id, $currentData));
         }
-        $wnpDiscSemEmps = $wnpDiscSemEmps->flatten()->unique('wnp_discipline_sem_id')->sortBy('id');
+        $wnpDiscSemEmps = $wnpDiscSemEmps->flatten()->unique('wnp_discipline_sem_id');
         $wnpDisciplineSems = $wnpDiscSemEmps->map->wnpDisciplineSem->flatten();
-        return view('employer.division', compact('currentData', 'wnpDisciplineSems', 'employers'));
+        $divisions = Division::all();
+
+        return view('employer.division', compact('currentData', 'wnpDisciplineSems', 'divisions'));
     }
 
     public function storeAddEditEmpTypeModal(Request $request)

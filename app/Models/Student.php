@@ -63,5 +63,9 @@ class Student extends Authenticatable
     {
         return "student";
     }
+    public function getShortNameAttribute()
+    {
+        return substr($this->first_name, 0,2). ".".substr($this->middle_name, 0,2).".";
+    }
 
 }

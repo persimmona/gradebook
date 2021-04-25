@@ -23,35 +23,6 @@
                 <td>{{ $wnpDisciplineSem->studyType->study_type_name}}</td>
                 <td>{{ $wnpDisciplineSem->hour_total}}</td>
                 <td>{{round( $wnpDisciplineSem->hour_total/30, 2)}}</td>
-                {{--<td>--}}
-                    {{--<div class="data-options">--}}
-                        {{--<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">--}}
-                            {{--<path d="M0 0h24v24H0z" fill="none"/>--}}
-                            {{--<path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#fff"/>--}}
-                        {{--</svg>--}}
-                        {{--<ul class="data-options__list">--}}
-                            {{--<li class="data-options__item">--}}
-                                {{--<a class="data-options__link" href="{{route('discipline.showJournal', ['wnpDisciplineSem'=>$wnpDisciplineSem, 'slug'=>--}}
-                    {{--Str::slug( $wnpDisciplineSem->discipline->discipline_name)])}}">--}}
-                                    {{--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
-                                        {{--<path d="M0 0h24v24H0z" fill="none"/>--}}
-                                        {{--<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>--}}
-                                    {{--</svg>--}}
-                                    {{--<span>Перейти</span>--}}
-                                {{--</a>--}}
-                            {{--</li>--}}
-                            {{--<li class="data-options__item">--}}
-                                {{--<a class="data-options__link" href="#">--}}
-                                    {{--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">--}}
-                                        {{--<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>--}}
-                                        {{--<path d="M0 0h24v24H0z" fill="none"/>--}}
-                                    {{--</svg>--}}
-                                    {{--<span>Додати контроль</span>--}}
-                                {{--</a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</td>--}}
             </tr>
             @endforeach
         </table>

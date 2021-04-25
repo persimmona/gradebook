@@ -23,10 +23,4 @@ class StudyType extends Model
     {
         return $this->hasMany(StudySubtype::class);
     }
-
-
-//    public static function getStudyTypesByDivisionId($divisionId)
-//    {
-//        return StudyType::where('division_id', $divisionId)->get();
-//    }
 }

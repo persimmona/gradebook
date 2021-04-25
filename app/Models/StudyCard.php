@@ -35,19 +35,8 @@ class StudyCard extends Model
         return StudyCard::where('study_group_id', $groupId)->where('student_id', $studentId)->first();
     }
 
-//    public static function getStudyCardsOrderByStudLastName($studyCards)
-//    {
-//        return dd($studyCards->with(['student' => function ($q) {
-//            $q->orderBy('first_name');
-//        }]));
-//    }
-
     public function scopeOrderByStudLastName($q)
     {
         return $q->with('student')->get()->sortBy('student.last_name');
     }
-
-
-
-
 }

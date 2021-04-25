@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OsvitaLevel extends Model
 {
    protected $keyType = 'decimal';
-    
+
    public $incrementing = false;
 
     public $timestamps = false;
@@ -16,4 +16,5 @@ class OsvitaLevel extends Model
     {
     	return $this->hasMany('App\Models\Speciality','osvita_level_id','id');
     }
-    */}
+    */
+}

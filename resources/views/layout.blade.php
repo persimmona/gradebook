@@ -12,9 +12,11 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href=" https://printjs-4de6.kxcdn.com/print.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src = "https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <title>@yield('title')</title>
 </head>

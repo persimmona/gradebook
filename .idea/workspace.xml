@@ -1,65 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="7cb51ab6-b6d8-4cd9-ab5b-3a8bb6103450" name="Default Changelist" comment="" />
-=======
     <list default="true" id="7cb51ab6-b6d8-4cd9-ab5b-3a8bb6103450" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_01_14_132147_create_students_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradebook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradebook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VSWorkspaceState.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/gradebook/v16/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/slnx.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DivisionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DivisionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TermController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TermController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Division.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Division.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OsvitaLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OsvitaLevel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/StudyCard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StudyCard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/StudyProgram.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StudyProgram.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/StudyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StudyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/TestDiscipline.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TestDiscipline.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/WnpSemester.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/WnpSemester.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/division.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/division.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/journal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/journal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/test_discipline/copy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/modals/copy.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/test_discipline/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/modals/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/test_discipline/exception.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/modals/exception.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
->>>>>>> Stashed changes
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2020_01_14_132147_create_students_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-            <state relative-caret-position="324">
-              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-=======
-            <state relative-caret-position="267">
-              <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
->>>>>>> Stashed changes
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/app/Http/Controllers/StatementController.php" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/resources/sass/app.scss" />
-        <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/login.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/register.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_01_14_132147_create_students_table.php" />
-      </list>
-    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -149,58 +157,37 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="631" />
-    <option name="y" value="59" />
-    <option name="width" value="701" />
-    <option name="height" value="688" />
-  </component>
+  <component name="ProjectId" id="1nWF52fz0j2H83vSAUiBJt0pQ5J" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="gradebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gradebook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gradebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gradebook" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gradebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gradebook" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gradebook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gradebook" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/OSPanel/modules/php/PHP_7.1-x64/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
@@ -208,15 +195,196 @@
       <recent name="D:\OSPanel\domains\gradebook\resources\images" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1612032137000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="1skMXMHOuEj99V77x2E8PSix1urXQiieNLshNh1g" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6ImJzOUZwMGUySmhsb1BpTjM3N2ZBUVE9PSIsInZhbHVlIjoieGJKS2JENW9wMlJWSlJwQ2hyNmJjQm92TkkxUVNSNUxKMlB0aEFuYkRSS01ZXC9YdjhcL3l3aVhSa1g0dmVONEIwdmVPQTl4UFZIbVFTeE04ZWpvVnF0YjViMHNuZmhRN1loSktYRTBTRkRna25UcEl3c0NaR3JtOXdLWjdWRTVkV0htZWVCMHpENkFtZVlKaVF0bjk4WjdBeWVvOGRvREZBV3hIQ0JMT3Urd3laYnFyaUtaMkJZOWF4Sngwb292bGZXWVd2Rnk2NWNWeGRkOGxTaHRiYXhFVllrZXpKVWdrR0hYVnkwTDZXT1hUa0J5d1VaOG1lb2JoYnRIbktJV1QzSHFGeE5jTndzV0RuRG8zdjhCaGljejF3ME5wQmpzdFFQZmhQbVY3ZVVLdUhcL1A0cFpuRDVjU2lVclwvTDRvVGRqRG1Vd2hmdXZvZ2RaOTYxZ0wyVUtEa0tpTnBpZFkwUUlDbUFjbE5lNW5ENU5yb01GcEp6QTI2Z3c4d3VDK1BTRjZMTE1GXC9hVWFGOVhBOHpuOEp5eFF0TU9kcHQ3OFl3S0NOQmJSUGJEVkM1bFFKTVVhb3drSzNxcDM5N0YyeFZKM05ZQmVWTENrSjBoNlhUZnNGenZpRUVnZlBrWlZjZUxoNlN0SVRwc3FCUHhXQzdUbXQ1dGZSSnBkVzBNcWxqdHpsUForcUpNVzVRMFhKVlhZY285eUFVblJmZVRzMmtyVlpjakxobFVMY3M9IiwibWFjIjoiZWIxMTdiZjE5YjczZmNhZjE3ZWZjM2UyMTI1Y2I2YjQ1MzViNGM2OGVjZGEzYjhjMDA2Y2NmYWNiZmFjOGNiMiJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032137000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IlhxRytBM3ZEZUprcEFwTUVjRVd5WXc9PSIsInZhbHVlIjoiWGtOMUhtcUZ6TklGYzdxNU1IdTgzbmVyWDFkdm90b25cL1RnV0JNNEUxUjcrbUdYSVUxT2hMa1VGQ2kzemx3SnBPdFpPTE9WMldxK294UDhRN2ROQW9nTVdzekNCTUJPNEdZUHR4b3FsWDRLYTJlRFlwUnFcL3d6NDNpWitNXC94REIiLCJtYWMiOiI3ZjA4ZGZiYTE3ZTVhN2U2ZGU1NTViMzM2MTczZjY3OGM0NDcxNGVmYTIwNzdjMmRlZTkyY2U1NzEzZjMyNWJkIn0%3D" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032137000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6InZTQ1NKY2x2ZWhyQjJsWEFsV2I2SEE9PSIsInZhbHVlIjoid1ZMbWRkZHBPclwvcU44aFdVTGFOaUtaUHEzZTdiUys4ek5TU0V5V0h1NDdOeGt2VWFPem5heVA4VkI0UDJYQnVhN25ObXB6OXhEK1JYYkJPbEtcL09mS2I1NTU4M3FGdFhuZE90VFpXdFFkcmpWYmRWYXE2b3RjNktpTU0zUlA1cSIsIm1hYyI6ImEwMzg4ZDU5MWRkMjI5NjcwMmZjYzc1NzM4NTk3ZTUxNDE2MWU2YTk2N2YyMjNiMjIxYzE4ZDMwMWFlNmIzZTEifQ%3D%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="divisions/OQCLGOCRKXES/statements" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="group" />
+                <option name="value" value="fsdfdds" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="1skMXMHOuEj99V77x2E8PSix1urXQiieNLshNh1g" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6ImtLc3pEemR3dnhsZmV6anpCVjhHVWc9PSIsInZhbHVlIjoidmREQjIzbnoyVXlETUVaUmhJSEtFOWx2Q1p5WWZhRlNGWmZnVlF0cGNpMWtLV1ZKM1hwU0k1XC9vMmxyZUFqSTNJZWk5TDFiSHNlUlpOWk5ZMGE0cU1MaWtUMmZRd1RzMFBTcGFJaGRIaTAwaERSQUd5b0dnXC93NjFGMHY3T0ppeEliVEt3OHZjT1krbGF1cnEzTVwvZUo5emhOS0h6dFRjQTkrRGlJa3Q4MTNMdktieWJJWFJHeHV6Z1wvNnBHNjJPT3JodTRtS1JXbDUreU1YbUdnNlF1YmVYK2luTEI5WGJNYUtCSGpnREFcL05QcjdIYTZsNmxkYis5aERKUDFiUXp5STIxODRsMHp0MldFV0M3OHBGNWdaeDRCNnBkWXFuRlZcL2tHa1p6ZCttc1pSdXVRdzlqV2xUMjVlaEJoVFpuRXA2N3NXS3drTEdGNzh6Y0hQRFN1YzZCek1aZENJSzFEYUtHTmlqQ0pydFE2UFF4WEVWOEZqTmhwbmFtV0V2SVV4WTc1NWh2Z25tY2lWdXlTZ3B1MU5FV3RLTlwvM25UKzcrVVJaVkswUCtIUDJ1K0FZM3VsRGU5alh0VjNGSFwvXC9QNElOaHh2cDc5bGg2XC8wZ1ZIdWFDdWhDZUFNbUloS3ZHcUVmSHozYnZBS3NsbmRnVmtMWWdtWDhXaWFKVTBpN2w0NTRhcUhYSENKVmIxOFJqc0I1ZUdyQT09IiwibWFjIjoiNGFjYjE4YWRlNzA0Y2QwZTNjNzcxMTFkYzY3N2Y1ZjEzZGNkMTg1NzhhYTFkYTYyNmVlMjY5Zjk4ODNiNDc3MyJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IlVPYmdRUkp0ZDlySVBhQ1hRNVdMOUE9PSIsInZhbHVlIjoiOHpPR0RvSUJ1emh3SDRYZytIeldvSmt3WFV1YVBQaUFjMEtKcUI4RHVcLzlRQXNsNlhreXZsSUlUNlNnVnVBaHJpY3BHSGRoR2E3bWtmYm1VWGRaRWxPY3Vja0hKS2dqTld1bDhVWUFiaEJGcThIdzFOd1lYaFNaMmw1YVR0amJoIiwibWFjIjoiMGJmOWQyNWVhMjZiNWM1YjIzMjI5OTZhZDg2MTU2Mzk0NjFhZWVkM2FmNzgxMTc1MmQyOGY3NTA2MjMyZmIwMyJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IkdiTGw3ODNmOXlOM0dqZGZsXC9OOUVRPT0iLCJ2YWx1ZSI6Ilh0NWZOUTJjQ2Z0WmN5VDFwY0ZmMWhtSW1tQVwvZzBpVEFnUjZpRHFWT1dncDNqRDdJcUY4YlZiXC9uUGIwY2gwc2VcL2Z4cnVLZWFCUVdpb2Y0eXA0K3hmcVwvb1lZSDlhRzNCeG00WmRibDVOQkZyTTdrb2VYZ2phdlwvcUJNUnBSNDAiLCJtYWMiOiIyNTJiY2Q2OTdlOTlkNWZlYzIzNGIxNjgwMDE0ZGFkMWI3NTcwZWIwZTc4NmJlMTYzMWY3ZGVmODc0MTZmYzk0In0%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="divisions" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="group" />
+                <option name="value" value="fsdfdds" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="biscuits">
+            <list>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="1skMXMHOuEj99V77x2E8PSix1urXQiieNLshNh1g" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6ImtLc3pEemR3dnhsZmV6anpCVjhHVWc9PSIsInZhbHVlIjoidmREQjIzbnoyVXlETUVaUmhJSEtFOWx2Q1p5WWZhRlNGWmZnVlF0cGNpMWtLV1ZKM1hwU0k1XC9vMmxyZUFqSTNJZWk5TDFiSHNlUlpOWk5ZMGE0cU1MaWtUMmZRd1RzMFBTcGFJaGRIaTAwaERSQUd5b0dnXC93NjFGMHY3T0ppeEliVEt3OHZjT1krbGF1cnEzTVwvZUo5emhOS0h6dFRjQTkrRGlJa3Q4MTNMdktieWJJWFJHeHV6Z1wvNnBHNjJPT3JodTRtS1JXbDUreU1YbUdnNlF1YmVYK2luTEI5WGJNYUtCSGpnREFcL05QcjdIYTZsNmxkYis5aERKUDFiUXp5STIxODRsMHp0MldFV0M3OHBGNWdaeDRCNnBkWXFuRlZcL2tHa1p6ZCttc1pSdXVRdzlqV2xUMjVlaEJoVFpuRXA2N3NXS3drTEdGNzh6Y0hQRFN1YzZCek1aZENJSzFEYUtHTmlqQ0pydFE2UFF4WEVWOEZqTmhwbmFtV0V2SVV4WTc1NWh2Z25tY2lWdXlTZ3B1MU5FV3RLTlwvM25UKzcrVVJaVkswUCtIUDJ1K0FZM3VsRGU5alh0VjNGSFwvXC9QNElOaHh2cDc5bGg2XC8wZ1ZIdWFDdWhDZUFNbUloS3ZHcUVmSHozYnZBS3NsbmRnVmtMWWdtWDhXaWFKVTBpN2w0NTRhcUhYSENKVmIxOFJqc0I1ZUdyQT09IiwibWFjIjoiNGFjYjE4YWRlNzA0Y2QwZTNjNzcxMTFkYzY3N2Y1ZjEzZGNkMTg1NzhhYTFkYTYyNmVlMjY5Zjk4ODNiNDc3MyJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="XSRF-TOKEN" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IlVPYmdRUkp0ZDlySVBhQ1hRNVdMOUE9PSIsInZhbHVlIjoiOHpPR0RvSUJ1emh3SDRYZytIeldvSmt3WFV1YVBQaUFjMEtKcUI4RHVcLzlRQXNsNlhreXZsSUlUNlNnVnVBaHJpY3BHSGRoR2E3bWtmYm1VWGRaRWxPY3Vja0hKS2dqTld1bDhVWUFiaEJGcThIdzFOd1lYaFNaMmw1YVR0amJoIiwibWFjIjoiMGJmOWQyNWVhMjZiNWM1YjIzMjI5OTZhZDg2MTU2Mzk0NjFhZWVkM2FmNzgxMTc1MmQyOGY3NTA2MjMyZmIwMyJ9" />
+              </Biscuit>
+              <Biscuit>
+                <option name="date" value="1612032044000" />
+                <option name="domain" value="localhost" />
+                <option name="name" value="laravel_session" />
+                <option name="path" value="/" />
+                <option name="value" value="eyJpdiI6IkdiTGw3ODNmOXlOM0dqZGZsXC9OOUVRPT0iLCJ2YWx1ZSI6Ilh0NWZOUTJjQ2Z0WmN5VDFwY0ZmMWhtSW1tQVwvZzBpVEFnUjZpRHFWT1dncDNqRDdJcUY4YlZiXC9uUGIwY2gwc2VcL2Z4cnVLZWFCUVdpb2Y0eXA0K3hmcVwvb1lZSDlhRzNCeG00WmRibDVOQkZyTTdrb2VYZ2phdlwvcUJNUnBSNDAiLCJtYWMiOiIyNTJiY2Q2OTdlOTlkNWZlYzIzNGIxNjgwMDE0ZGFkMWI3NTcwZWIwZTc4NmJlMTYzMWY3ZGVmODc0MTZmYzk0In0%3D" />
+              </Biscuit>
+            </list>
+          </option>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="divisions/OQCLGOCRKXES/statements" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="group" />
+                <option name="value" value="fsdfdds" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8000" />
+          <option name="urlPath" value="divisions/OQCLGOCRKXES/statements" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="group" />
+                <option name="value" value="fsdfdds" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
       </list>
     </option>
   </component>
@@ -237,139 +405,125 @@
       <option name="presentableId" value="Default" />
       <updated>1578999105039</updated>
       <workItem from="1578999110577" duration="3008000" />
+      <workItem from="1611498024023" duration="53000" />
+      <workItem from="1611498087330" duration="99000" />
+      <workItem from="1611581947927" duration="859000" />
+      <workItem from="1612014903654" duration="11257000" />
+      <workItem from="1612026294027" duration="216000" />
+      <workItem from="1612166930877" duration="12000" />
+      <workItem from="1612254068420" duration="39000" />
+      <workItem from="1612289360675" duration="2592000" />
+      <workItem from="1612342985782" duration="34000" />
+      <workItem from="1612355158042" duration="2801000" />
+      <workItem from="1612362875244" duration="238000" />
+      <workItem from="1612611049002" duration="8548000" />
+      <workItem from="1612951896920" duration="808000" />
+      <workItem from="1613309758263" duration="7205000" />
+      <workItem from="1613319908143" duration="1202000" />
+      <workItem from="1613417298114" duration="881000" />
+      <workItem from="1613456975676" duration="1857000" />
+      <workItem from="1613557234921" duration="3000" />
+      <workItem from="1615371738778" duration="11000" />
+      <workItem from="1616167049487" duration="717000" />
+      <workItem from="1616415101882" duration="17000" />
+      <workItem from="1616764592489" duration="45000" />
+      <workItem from="1617612099138" duration="20000" />
+      <workItem from="1619280172561" duration="1674000" />
+      <workItem from="1619340304015" duration="2535000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-<<<<<<< Updated upstream
-    <option name="totallyTimeSpent" value="3861000" />
-=======
-    <option name="totallyTimeSpent" value="4002000" />
->>>>>>> Stashed changes
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
-    <layout>
-<<<<<<< Updated upstream
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
-=======
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
->>>>>>> Stashed changes
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-<<<<<<< Updated upstream
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3289689" />
-=======
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3289689" />
->>>>>>> Stashed changes
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa7496.30172/style.css" />
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="164" column="1" lean-forward="true" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../blog/resources/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../blog1/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa7496.29756/markup/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa7496.29756/markup/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="52" column="40" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="52" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/register.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_01_14_132147_create_students_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state relative-caret-position="324">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-=======
-        <state relative-caret-position="267">
-          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
->>>>>>> Stashed changes
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="345" y="58" key="#SSH_Configurations" timestamp="1616167641373">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="345" y="58" key="#SSH_Configurations/0.0.1536.824@0.0.1536.824" timestamp="1616167641373" />
+    <state x="493" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613310741352">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="493" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1613310741352" />
+    <state x="306" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1612017726423">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="306" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1612017726423" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612025766472">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1612025766472" />
+    <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1612015431819">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1612015431819" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617612117915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617612117915" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1612024912799">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612024912799" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1611498100167">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611498100167" />
+    <state x="478" y="147" width="579" height="530" key="find.popup" timestamp="1619340594996">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="147" width="579" height="530" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1619340594996" />
+    <state x="590" y="143" key="ftp.server.browser" timestamp="1616167683312">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="590" y="143" key="ftp.server.browser/0.0.1536.824@0.0.1536.824" timestamp="1616167683312" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1612620156536">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1612620156536" />
+    <state x="431" y="145" width="672" height="676" key="search.everywhere.popup" timestamp="1613457069382">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1613457069382" />
   </component>
 </project>

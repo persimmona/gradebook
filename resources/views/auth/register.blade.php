@@ -31,7 +31,7 @@
                 @enderror
             </div>
 
-            <div class="radio-field"> 
+            <div class="radio-field">
                 <label class="radio-btn">
                     <input class="radio-btn__input" type="radio" name="role" value="student" checked>
                     <span class="radio-btn__box"></span>
@@ -44,7 +44,9 @@
                 </label>
             </div>
 
-            <button class="login-form__submit" type="submit">Увійти</button>
+            <button class="login-form__submit" type="submit">Підтвердити</button>
+            <a href="{{route('login.index')}}" class="login-form__link">Вже маєш обліковий запис?</a>
+
         </div>
 
         <div class="curtain">
